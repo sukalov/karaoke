@@ -145,11 +145,11 @@ h5, p {
 
 .checkbox-belizehole:checked + label:before,
 .checkbox-belizehole:not(:checked) + label:before{
-  border: 1px solid #2980b9;
+  border: 1px solid #216a9b;
 }
 .checkbox-belizehole:checked + label:after,
 .checkbox-belizehole:not(:checked) + label:after{
-  background-color: #2980b9;
+  background-color: #216a9b;
 }
 
 .checkbox-sunflower:checked + label:before,
@@ -186,7 +186,7 @@ h5, p {
 }
 
 .box.belizehole{
-  background-color: #2980b9;
+  background-color: #216a9b;
 }
 .box.sunflower{
   background-color: #cc9c3c;
