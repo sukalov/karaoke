@@ -105,6 +105,18 @@ a:hover {
   background-color: #e74c3c;
 }
 
+
+.checkbox-grey:checked + label:before,
+.checkbox-grey:not(:checked) + label:before{
+  border: 1px solid #433;
+}
+
+.checkbox-grey:checked + label:after,
+.checkbox-grey:not(:checked) + label:after{
+  background-color: #433;
+}
+
+
 .checkbox-wisteria:checked + label:before,
 .checkbox-wisteria:not(:checked) + label:before{
   border: 1px solid #8e44ad;
@@ -146,33 +158,45 @@ a:hover {
   box-shadow: 6px 7px 28px 0 rgba(16, 16, 16, 0.7);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  overflow-y: auto;
 }
 .box.alizarin{
   background-color: #e74c3c;
+  color: #131318;
+
 }
 .box.wisteria{
   background-color: #8e44ad;
 }
 .box.emerland{
   background-color: #2ecc71;
+  color: #131318;
 }
+
+.box.grey{
+  background-color: #433;
+}
+
 .box.belizehole{
   background-color: #2980b9;
 }
 .box.sunflower{
   background-color: #f1c40f;
+  color: #131318;
 }
 .box.alizarin,
 .box.wisteria,
 .box.emerland,
 .box.belizehole,
+.box.grey,
 .box.sunflower{
   opacity: 0;
   min-height: 0;
-  max-width: 0;
+  box-sizing: border-box;
   min-width: 0;
+  height: 0;
   padding: 0;
-  margin: 0;
+  margin: 0px;
   visibility: hidden;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -180,13 +204,14 @@ a:hover {
 .checkbox-alizarin:checked ~ .box.alizarin,
 .checkbox-wisteria:checked ~ .box.wisteria,
 .checkbox-emerland:checked ~ .box.emerland,
+.checkbox-grey:checked ~ .box.grey,
 .checkbox-belizehole:checked ~ .box.belizehole,
 .checkbox-sunflower:checked ~ .box.sunflower{
   opacity: 1;
   min-height: 140px;
   max-width: 100%;
   min-width: calc(25% - 20px);
-  padding: 0 10px;
+  padding: 10px 10px;
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 20px;
@@ -194,8 +219,12 @@ a:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+
+/* =======  MEDIA  ====== */
+
 @media (max-width: 1199px) {	
   .checkbox-alizarin:checked ~ .box.alizarin,
+  .checkbox-grey:checked ~ .box.grey,
   .checkbox-wisteria:checked ~ .box.wisteria,
   .checkbox-emerland:checked ~ .box.emerland,
   .checkbox-belizehole:checked ~ .box.belizehole,
@@ -205,6 +234,7 @@ a:hover {
 }
 @media (max-width: 991px) {	
   .checkbox-alizarin:checked ~ .box.alizarin,
+  .checkbox-grey:checked ~ .box.grey,
   .checkbox-wisteria:checked ~ .box.wisteria,
   .checkbox-emerland:checked ~ .box.emerland,
   .checkbox-belizehole:checked ~ .box.belizehole,
@@ -214,36 +244,12 @@ a:hover {
 }
 @media (max-width: 575px) {	
   .checkbox-alizarin:checked ~ .box.alizarin,
+  .checkbox-grey:checked ~ .box.grey,
   .checkbox-wisteria:checked ~ .box.wisteria,
   .checkbox-emerland:checked ~ .box.emerland,
   .checkbox-belizehole:checked ~ .box.belizehole,
   .checkbox-sunflower:checked ~ .box.sunflower{
     min-width: calc(100% - 20px);
+    font-size: 1.2rem;
   }
-}
-
-/* #Link to page
-================================================== */
-
-.link-to-portfolio {
-	  position: fixed;
-    top: 30px;
-    right: 30px;
-    z-index: 200;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    border-radius: 3px;
-    background-position: center center;
-    background-size: cover;
-    background-image: url('https://ivang-design.com/ig-logo.jpg');
-    box-shadow: 0 0 0 2px rgba(255,255,255,.1);
-    transition: opacity .2s, border-radius .2s, box-shadow .2s;
-    transition-timing-function: ease-out;
-}
-.link-to-portfolio:hover {
-    opacity: 0.8;
-    border-radius: 50%;
-    box-shadow: 0 0 0 20px rgba(255,255,255,.1);
 }
