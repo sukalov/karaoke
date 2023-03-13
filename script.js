@@ -329,10 +329,10 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     div.classList.add("box");
     const artist = document.createElement ('h5');
     artist.innerText = songs[i]['имя'] + ' ' + songs[i]['исполнитель'];
-    if (artist.innerText == ' ') {artist.innerText = 'Неизвестен'};
+    if (artist.innerText == ' ') {artist.innerText = 'неизвестен'};
     const songName = document.createElement ('p');
     songName.innerText = songs[i]['песня'];
-    if (songName.innerText == ' ') {songName.innerText = 'Без названия'};
+    if (songName.innerText == ' ') {songName.innerText = 'без названия'};
     div.appendChild(artist);
     div.appendChild(songName);
 
