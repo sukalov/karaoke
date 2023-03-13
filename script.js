@@ -319,7 +319,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 разное,,цыпленок жареный,,
 разное,,чёрный ворон,,
 разное,,я назову тебя зоренькой,,`);
-  console.log(songs);
+
   let page = document.getElementsByClassName('justify-content-center')[0];
 
   for(let i = 0; i < songs.length; i++) {
@@ -356,7 +356,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
             div.classList.add('sunflower');
             break;
     }
-    console.log(div.outerHTML);
+
     page.appendChild(div);
   }
 
