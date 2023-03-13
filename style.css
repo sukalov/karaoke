@@ -78,7 +78,7 @@ h5, p {
   width: calc(100% - 8px);
   border-radius: 2px;
   height: 22px;
-  background-color: #e74c3c;
+  background-color: hsl(5, 57%, 51%);
   position: absolute;
   top: 4px;
   left: 4px;
@@ -102,11 +102,11 @@ h5, p {
 
 .checkbox-alizarin:checked + label:before,
 .checkbox-alizarin:not(:checked) + label:before{
-  border: 1px solid #e74c3c;
+  border: 1px solid hsl(5, 57%, 51%);
 }
 .checkbox-alizarin:checked + label:after,
 .checkbox-alizarin:not(:checked) + label:after{
-  background-color: #e74c3c;
+  background-color: hsl(5, 57%, 51%);
 }
 
 
@@ -123,20 +123,20 @@ h5, p {
 
 .checkbox-wisteria:checked + label:before,
 .checkbox-wisteria:not(:checked) + label:before{
-  border: 1px solid #8e44ad;
+  border: 1px solid #562a69;
 }
 .checkbox-wisteria:checked + label:after,
 .checkbox-wisteria:not(:checked) + label:after{
-  background-color: #8e44ad;
+  background-color: #562a69;
 }
 
 .checkbox-emerland:checked + label:before,
 .checkbox-emerland:not(:checked) + label:before{
-  border: 1px solid #2ecc71;
+  border: 1px solid #1c8454;
 }
 .checkbox-emerland:checked + label:after,
 .checkbox-emerland:not(:checked) + label:after{
-  background-color: #2ecc71;
+  background-color: #1c8454;
 }
 
 .checkbox-belizehole:checked + label:before,
@@ -150,11 +150,11 @@ h5, p {
 
 .checkbox-sunflower:checked + label:before,
 .checkbox-sunflower:not(:checked) + label:before{
-  border: 1px solid #f1c40f;
+  border: 1px solid #cc9c3c;
 }
 .checkbox-sunflower:checked + label:after,
 .checkbox-sunflower:not(:checked) + label:after{
-  background-color: #f1c40f;
+  background-color: #cc9c3c;
 }
 
 .box{
@@ -165,16 +165,16 @@ h5, p {
   overflow-y: auto;
 }
 .box.alizarin{
-  background-color: #e74c3c;
-  color: #131318;
+  background-color: hsl(5, 57%, 51%);
+  color: #eee;
 
 }
 .box.wisteria{
-  background-color: #8e44ad;
+  background-color: #562a69;
 }
 .box.emerland{
-  background-color: #2ecc71;
-  color: #131318;
+  background-color: #1c8454;
+  color: #eee;
 }
 
 .box.grey{
@@ -185,7 +185,7 @@ h5, p {
   background-color: #2980b9;
 }
 .box.sunflower{
-  background-color: #f1c40f;
+  background-color: #cc9c3c;
   color: #131318;
 }
 .box.alizarin,
