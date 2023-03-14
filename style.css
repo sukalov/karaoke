@@ -26,6 +26,45 @@ h5, p {
   text-transform: lowercase;
 }
 
+.row.justify-content-center {
+  position: relative;
+  margin-block: auto;
+  min-height: 85vh;
+  /* padding-top: 30px; */
+}
+
+label {
+  height: fit-content;
+}
+
+#button {
+  /* height: auto; */
+  width: 100%;
+  margin-bottom: -.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="button"] {
+  font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 1.7;
+  letter-spacing: 2px;
+	color: #c4c3ca;
+  background-color: transparent;
+  color: #eee;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="button"]:hover {
+  border: 1px solid #999;
+}
+
 .section{
   position: relative;
   width: 100%;
@@ -214,7 +253,13 @@ h5, p {
 .checkbox-emerland:checked ~ .box.emerland,
 .checkbox-grey:checked ~ .box.grey,
 .checkbox-belizehole:checked ~ .box.belizehole,
-.checkbox-sunflower:checked ~ .box.sunflower{
+.checkbox-sunflower:checked ~ .box.sunflower,
+.box.alizarin.selected,
+.box.grey.selected,
+.box.wisteria.selected,
+.box.emerland.selected,
+.box.belizehole.selected,
+.box.sunflower.selected{
   opacity: 1;
   min-height: 100px;
   max-width: 100%;
@@ -236,7 +281,13 @@ h5, p {
   .checkbox-wisteria:checked ~ .box.wisteria,
   .checkbox-emerland:checked ~ .box.emerland,
   .checkbox-belizehole:checked ~ .box.belizehole,
-  .checkbox-sunflower:checked ~ .box.sunflower{
+  .checkbox-sunflower:checked ~ .box.sunflower,
+  .box.alizarin.selected,
+  .box.grey.selected,
+  .box.wisteria.selected,
+  .box.emerland.selected,
+  .box.belizehole.selected,
+  .box.sunflower.selected{
     min-width: calc(33.333333333333% - 20px);
   }
 }
@@ -246,7 +297,13 @@ h5, p {
   .checkbox-wisteria:checked ~ .box.wisteria,
   .checkbox-emerland:checked ~ .box.emerland,
   .checkbox-belizehole:checked ~ .box.belizehole,
-  .checkbox-sunflower:checked ~ .box.sunflower{
+  .checkbox-sunflower:checked ~ .box.sunflower,
+  .box.alizarin.selected,
+  .box.grey.selected,
+  .box.wisteria.selected,
+  .box.emerland.selected,
+  .box.belizehole.selected,
+  .box.sunflower.selected{
     min-width: calc(50% - 20px);
   }
 }
@@ -256,7 +313,14 @@ h5, p {
   .checkbox-wisteria:checked ~ .box.wisteria,
   .checkbox-emerland:checked ~ .box.emerland,
   .checkbox-belizehole:checked ~ .box.belizehole,
-  .checkbox-sunflower:checked ~ .box.sunflower{
+  .checkbox-sunflower:checked ~ .box.sunflower,
+  .box.alizarin.selected,
+  .box.grey.selected,
+  .box.wisteria.selected,
+  .box.emerland.selected,
+  .box.belizehole.selected,
+  .box.sunflower.selected
+  {
     min-width: calc(100% - 20px);
     min-height: 80px;
     height: auto;
