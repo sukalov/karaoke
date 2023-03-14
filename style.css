@@ -29,7 +29,7 @@ h5, p {
 .row.justify-content-center {
   position: relative;
   margin-block: auto;
-  min-height: 85vh;
+  min-height: 85svh;
   /* padding-top: 30px; */
 }
 
