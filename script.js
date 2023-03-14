@@ -375,7 +375,6 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         };
         checkboxes[i].classList.toggle('ischecked')
         if (block !== 1){
-            if (song != undefined) {song.classList.toggle('selected')};
             button.style = "opacity: 0; visibility: hidden";
             block = 1;
         };
