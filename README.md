@@ -1,2 +1,2 @@
 # karaoke
-web-page for karaoke app
+web-page for karaoke songbook app

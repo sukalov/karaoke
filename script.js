@@ -320,17 +320,22 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 разное,,чёрный ворон,,
 разное,,я назову тебя зоренькой,,`);
 
-  let page = document.getElementsByClassName('justify-content-center')[0];
+  const page = document.getElementsByClassName('justify-content-center')[0];
 
+
+  // massive and ugly cycle, that goes
+  // through our songbook-data and
+  // creates all the data div-blocks
   for(let i = 0; i < songs.length; i++) {
     const div = document.createElement("div");
     div.className = "col";
     div.setAttribute("id", String(i));
     div.classList.add("box");
-    const artist = document.createElement ('h5');
+
+    const artist = document.createElement ('p');
     artist.innerText = songs[i]['имя'] + ' ' + songs[i]['исполнитель'];
     if (artist.innerText == ' ') {artist.innerText = 'неизвестен'};
-    const songName = document.createElement ('p');
+    const songName = document.createElement ('h5');
     songName.innerText = songs[i]['песня'];
     if (songName.innerText == ' ') {songName.innerText = 'без названия'};
     div.appendChild(artist);
@@ -358,27 +363,25 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     }
 
     page.appendChild(div);
-  }
+  };
 
-  var song
-  var block
-  var button = document.getElementById('button');
+  let song;
+  let button = document.getElementById('button');
 
+  // adding eventListeners to all the categories
+  // so that ерун influence the randomSong button
   let checkboxes = document.querySelectorAll('[type="checkbox"]');
-//   console.log(checkboxes)  
   for(let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener("click", function(){
-        if (song != undefined) {
+        if (song != undefined) { // hiding randomSong
             if (song.classList.contains('selected')){
                 song.classList.toggle('selected');
-            }
+            };
         };
         checkboxes[i].classList.toggle('ischecked')
-        if (block !== 1){
-            button.style = "opacity: 0; visibility: hidden";
-            block = 1;
-        };
-        let ifChecked = 0;
+        button.style = "opacity: 0; visibility: hidden";
+
+        let ifChecked = 0; // how many categories are selected
         for(let j = 0; j < checkboxes.length; j++){
             if (checkboxes[j].classList.contains('ischecked')) {
                 ifChecked++;
@@ -391,15 +394,22 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         };
         
     });
-  }
+  };
 
+  // can be activated  from web-page only when
+  // there is no song displayed
   const randomSong = () => {
-    button.style = "opacity: 0; visibility: hidden"
-    // if (song != undefined) {
-    //     song.classList.toggle('selected');
-    //     }
-    const index = Math.floor(Math.random() * songs.length)
+    if (song != undefined) { // надо прописать заново, чтобы не множились песни при нескольких кликах
+        if (song.classList.contains('selected')){
+            song.classList.toggle('selected');
+        };
+    };
+    const index = Math.floor(Math.random() * songs.length);
     song = document.getElementById(String(index));
     song.classList.toggle('selected');
-    // console.log(song)
-}
+    // console.log(song);
+};
+
+const navBarChange = () => {
+    
+};
