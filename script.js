@@ -334,10 +334,10 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 
     const artist = document.createElement ('p');
     artist.innerText = songs[i]['имя'] + ' ' + songs[i]['исполнитель'];
-    if (artist.innerText == ' ') {artist.innerText = 'неизвестен'};
+    if (artist.innerText == ' ') {artist.innerText = 'неизвестен'}
     const songName = document.createElement ('h5');
     songName.innerText = songs[i]['песня'];
-    if (songName.innerText == ' ') {songName.innerText = 'без названия'};
+    if (songName.innerText == ' ') {songName.innerText = 'без названия'}
     div.appendChild(artist);
     div.appendChild(songName);
 
@@ -360,10 +360,10 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         case 'разное':
             div.classList.add('sunflower');
             break;
-    }
+    };
 
     page.appendChild(div);
-  };
+  }
 
   let song;
   let button = document.getElementById('button');
@@ -376,8 +376,8 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         if (song != undefined) { // hiding randomSong
             if (song.classList.contains('selected')){
                 song.classList.toggle('selected');
-            };
-        };
+            }
+        }
         checkboxes[i].classList.toggle('ischecked')
         button.style = "opacity: 0; visibility: hidden";
 
@@ -386,15 +386,15 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
             if (checkboxes[j].classList.contains('ischecked')) {
                 ifChecked++;
             }
-        };
+        }
         if (ifChecked == 0) {
             button.style = "opacity: 1; visibility: visible"
         } else {
             button.style = "opacity: 0; visibility: hidden"
-        };
+        }
         
     });
-  };
+  }
 
   // can be activated  from web-page only when
   // there is no song displayed
@@ -402,8 +402,8 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     if (song != undefined) { // надо прописать заново, чтобы не множились песни при нескольких кликах
         if (song.classList.contains('selected')){
             song.classList.toggle('selected');
-        };
-    };
+        }
+    }
     const index = Math.floor(Math.random() * songs.length);
     song = document.getElementById(String(index));
     song.classList.toggle('selected');
@@ -411,5 +411,5 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 };
 
 const navBarChange = () => {
-    
+
 };
