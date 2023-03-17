@@ -9,6 +9,7 @@
     <link rel="icon" href="/icons8-microphone-32.ico">
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="/script.js" defer></script>
+    <script src="/navbar_change.js" defer></script>
 
     <title>караоке</title>
 </head>
@@ -17,18 +18,19 @@
     <div class="section">
         <div class="container">
             <div class="row justify-content-center">
+                <div class="navbar-bg"></div>
                 <input class="checkbox-alizarin" type="checkbox" id="color-1" />
-                <label for="color-1">советское</label>
+                <label for="color-1" id="label-1">советское</label>
                 <input class="checkbox-wisteria" type="checkbox" id="color-2" />
-                <label for="color-2">русский рок</label>
+                <label for="color-2" id="label-2">русский рок</label>
                 <input class="checkbox-emerland" type="checkbox" id="color-3" />
-                <label for="color-3">зарубежное</label>
+                <label for="color-3" id="label-3">зарубежное</label>
                 <input class="checkbox-belizehole" type="checkbox" id="color-4" />
-                <label for="color-4">детские песни</label>
+                <label for="color-4" id="label-4">детские песни</label>
                 <input class="checkbox-grey" type="checkbox" id="color-6" />
-                <label for="color-6">русская поп-музыка</label>
+                <label for="color-6" id="label-6">русская поп-музыка</label>
                 <input class="checkbox-sunflower" type="checkbox" id="color-5"  />
-                <label for="color-5">разное</label>
+                <label for="color-5" id="label-5">разное</label>
                 <div class="section p-0 pt-2"></div>
                 <div id="button"> 
                     <input type="button" onclick="randomSong()" value=" СЛУЧАЙНАЯ ПЕСНЯ ">

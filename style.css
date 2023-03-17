@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   min-width: 300px;
 }
@@ -24,6 +28,18 @@ a:hover {
 
 h5, p {
   text-transform: lowercase;
+}
+
+.navbar-bg{
+  top: 0;
+  width: 150vw;
+  position: fixed;
+  background-color: #131318;
+  height: 80px;
+  z-index: 10;
+    /* box-shadow:0px 5px 300px #131318; */
+  -webkit-box-shadow:0px 10px 70px #131318;
+  /* -moz-box-shadow:0px 30px 20px #131318; */
 }
 
 .row.justify-content-center {
@@ -93,7 +109,17 @@ input[type="button"]:hover {
   margin-block: 5px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  user-select: none;
+  transition: 0.4s ease;
+  z-index: 20;
+  display: block;
+  overflow: hidden;
 }
+
+input[type="checkbox"] {
+  display: none;
+}
+
 [type="checkbox"]:checked:hover + label:before,
 [type="checkbox"]:not(:checked):hover + label:before,
 [type="checkbox"]:checked:hover + label:after,
