@@ -181,12 +181,12 @@ input[type="checkbox"] {
 
 .checkbox-grey:checked + label:before,
 .checkbox-grey:not(:checked) + label:before{
-  border: 1px solid #433;
+  border: 1px solid #544;
 }
 
 .checkbox-grey:checked + label:after,
 .checkbox-grey:not(:checked) + label:after{
-  background-color: #433;
+  background-color: #544;
 }
 
 
@@ -247,7 +247,7 @@ input[type="checkbox"] {
 }
 
 .box.grey{
-  background-color: #433;
+  background-color: #544;
 }
 
 .box.belizehole{
