@@ -37,7 +37,7 @@ h5, p {
   background-color: #131318;
   height: 80px;
   z-index: 10;
-    /* box-shadow:0px 5px 300px #131318; */
+  box-shadow:0px 5px 300px #131318;
   -webkit-box-shadow:0px 10px 70px #131318;
   /* -moz-box-shadow:0px 30px 20px #131318; */
 }
