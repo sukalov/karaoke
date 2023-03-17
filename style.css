@@ -31,11 +31,11 @@ h5, p {
 }
 
 .navbar-bg{
-  top: 0;
+  top: -10px;
   width: 150vw;
   position: fixed;
   background-color: #131318;
-  height: 80px;
+  height: 90px;
   z-index: 10;
   box-shadow:0px 5px 300px #131318;
   -webkit-box-shadow:0px 10px 70px #131318;
@@ -47,6 +47,8 @@ h5, p {
   margin-block: auto;
   min-height: 85svh;
   /* padding-top: 30px; */
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 label {
