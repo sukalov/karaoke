@@ -24,12 +24,12 @@ const squeezeNavbar = () => {
         margin: 0 auto;
         position: fixed;
         left: ${positions[i]}%;
+        transform: translate(-50%, 0);
         top: 25px;
         width: 30px;
         height: 30px;
         box-sizing: border-box;
-        transition: 0s;
-        transform: translate(-50%, 0);`
+        transition: 0s`
     }
 }
 
@@ -40,7 +40,6 @@ const unSqueezeNavbar = () => {
     }
 }
 
-
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
@@ -49,8 +48,3 @@ function scrollFunction() {
         unSqueezeNavbar()
     }
 }
-
-
-
-// squeezeNavbar()
-console.log(labelsText)
