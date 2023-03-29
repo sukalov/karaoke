@@ -321,13 +321,16 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 разное,,я назову тебя зоренькой,,`);
 
   const page = document.getElementsByClassName('justify-content-center')[0];
-
+  const openLyrics = (url) => window.open(url, '_blank').focus();
 
   // massive and ugly cycle, that goes
   // through our songbook-data and
   // creates all the data div-blocks
   for(let i = 0; i < songs.length; i++) {
     const div = document.createElement("div");
+    try {div.addEventListener('click', () => {
+        openLyrics(songs[i]['аккорды'])
+    })} catch {}
     div.className = "col";
     div.setAttribute("id", String(i));
     div.classList.add("box");
