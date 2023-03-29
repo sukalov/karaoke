@@ -328,9 +328,12 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
   // creates all the data div-blocks
   for(let i = 0; i < songs.length; i++) {
     const div = document.createElement("div");
-    try {div.addEventListener('click', () => {
-        openLyrics(songs[i]['аккорды'])
-    })} catch {}
+    if (songs[i]['аккорды'] != '') {
+        div.style.cursor = 'pointer';
+        div.addEventListener('click', () => {
+        openLyrics(songs[i]['аккорды']);
+        })
+    } else {console.log(`аккордов для ${songs[i]['исполнитель']} ${songs[i]['песня']} нету`)}
     div.className = "col";
     div.setAttribute("id", String(i));
     div.classList.add("box");
