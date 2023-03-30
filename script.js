@@ -299,17 +299,17 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 разное,,чёрный ворон,,https://amdm.ru/akkordi/narodnye_i_zastolnye_pesni/173363/cherniy_voron/,`);
 
   const page = document.getElementsByClassName('justify-content-center')[0];
-  const openLyrics = (url) => window.open(url, '_blank').focus();
+  const openLyrics = (url) => window.open(url, '_self').focus();
 
   // massive and ugly cycle, that goes
   // through our songbook-data and
   // creates all the data div-blocks
   for(let i = 0; i < songs.length; i++) {
     const div = document.createElement("div");
-    if (songs[i]['аккорды'] != '') {
+    if (songs[i]['ссылка'] != '') {
         div.style.cursor = 'pointer';
         div.addEventListener('click', () => {
-        openLyrics(songs[i]['аккорды']);
+        openLyrics(songs[i]['ссылка']);
         })
     } else {console.log(`аккордов для ${songs[i]['исполнитель']} ${songs[i]['песня']} нету`)}
     div.className = "col";
