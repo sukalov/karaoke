@@ -2,29 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/ext-style.css">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/homestyle.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/ext-style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/homestyle.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>виа на праздник</title>
 </head>
 <body>
     <div class="homepage">
         <div class="home-contents">
-            <input class = "home-button" type="button" onclick="window.location.href = './songbook.html'" value="ВЫБРАТЬ ПЕСНЮ ДЛЯ КАРАОКЕ">
-            <input class = "home-button" id="donate" type="button" onclick="window.location.href = './songbook.html'" value="ПРОСТО СКИНУТЬ НАМ ДЕНЕГ">
-            <button id="tinkof" class="home-button bank tinkoff" onclick="window.location='https://tinkoff.ru'">
+            <input class = "home-button" id="songbook" type="button" onclick="window.location.href = './songbook.html'" value="ВЫБРАТЬ ПЕСНЮ ДЛЯ КАРАОКЕ">
+            <input class = "home-button" id="donate" type="button" onclick="toggleDonateButton()" value="ПРОСТО СКИНУТЬ НАМ ДЕНЕГ">
+            <button id="tinkof" class="home-button payments invisible bank tinkoff" onclick="window.location='https://www.tinkoff.ru/cf/9eX5F6qEily'">
                 <img src="assets/tink-dark.svg">
                 <p class="any-bank">или любой другой банк</p>
             </button>
-            <button id="sber" class="home-button bank sber">
+            <button id="sber" class="home-button payments invisible bank sber" onclick="window.location='https://pay.mysbertips.ru/17458725'">
                 <img src="assets/sber.svg">
             </button>
-            <div class="payment__methods">
+            <div class="payment__methods invisible payments">
                 <p>а можно по номеру телефона! <br><span class="phone" id="phone" onclick="copyDiv('phone')">+79160650611 <img class="copy" src="/assets/copy.svg" /> </span><span class="indent"> матвей</span></p>
             </div>
         </div>
+        <footer class="home-footer">
+            <a href="https://instagram.com/via_na_prazdnik">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://t.me/povsemmestam">
+                <i class="fab fa-telegram"></i>
+            </a>
+        </footer>
     </div>
 </body>
 <script src="js/home.js" defer></script>

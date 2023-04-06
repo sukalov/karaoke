@@ -1,3 +1,13 @@
+* {
+  user-select: none;
+}
+
+html {
+  --light-bg: #2b2b36;
+}
+
+
+
 .homepage {
   width: 100%;
   min-width: 330px;
@@ -12,7 +22,7 @@
   flex-direction: column;
   justify-content: space-around;
   gap: auto;
-  height: 75%;
+  height: 85%;
 }
 
 input[type="button"].home-button,
@@ -36,16 +46,6 @@ button:focus {
   outline: none;
 }
 
-.home-footer {
-  height: 200px;
-  width: 100%;
-  background-color: #eee;
-  color: #131318;
-  position: absolute;
-  bottom: 0;
-  box-shadow: 20px #eee ;
-}
-
 button.bank {
   padding: 15px 30px 5px 30px;
 }
@@ -53,6 +53,16 @@ button.bank {
 .bank > img {
   width: 100%;
   margin-bottom: 10px;
+}
+
+.bank, input.home-button {
+  border: #eee;
+  background: var(--light-bg);
+  border-radius: 25px;
+}
+
+.invisible {
+  display: none;
 }
 
 .tinkoff > img {
@@ -72,7 +82,7 @@ transform: scale(0.9);
 
 .payment__methods .phone {
   position: relative;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; */
   padding-inline: 5px 7px;
   white-space: nowrap;
 }
@@ -93,7 +103,7 @@ transform: scale(0.9);
 }
 
 .copied:after {
-  animation: copying 2s normal ease;
+  animation: copying 1.5s normal ease;
 }
 
 img.copy {
@@ -103,12 +113,62 @@ img.copy {
 }
 
 .indent {
-  margin-left: 30px;
+  margin-inline: 20px 15px;
+}
+
+.home-footer {
+  height: 100px;
+  width: 100%;
+  background-color: #131318;
+  color: #131318;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 20px #eee;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-inline: 80px;
+  /* border-top: 2px solid #2b2b36; */
+}
+
+.home-footer a {
+  color: #eee;
+  font-size: 2.5rem;
+}
+
+.home-footer a:hover {
+  opacity: .6;
+}
+
+.home-footer::before {
+  width: 85%;
+  content: '';
+  height: 3px;
+  top: 0;
+  position: absolute;
+  background-color: var(--light-bg);
+  border-radius: 1px;
+
 }
 
 @keyframes copying {
   0% {opacity: 0}
-  10%{opacity: 1}
-  90% {opacity: 1}
+  45%{opacity: 1}
+  55% {opacity: 1}
   100% {opacity: 0}
+}
+
+@media (hover: none) and (pointer: coarse) {
+  input[type="button"].home-button:hover,
+  button .home-button:hover {
+    background-color: #2b2b36;
+    color: #eee;
+    border: transparent;
+  }
+
+  input[type="button"]:focus,
+  button:focus {
+    background-color: #2b2b36;
+    border: none;
+  }
 }

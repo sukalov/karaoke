@@ -353,7 +353,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
   let button = document.getElementById('button');
 
   // adding eventListeners to all the categories
-  // so that ерун influence the randomSong button
+  // so that they influence the randomSong button
   let checkboxes = document.querySelectorAll('[type="checkbox"]');
   for(let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener("click", function(){
