@@ -24,6 +24,15 @@
         document.execCommand("copy");
         window.getSelection().removeAllRanges();// to deselect
         showCopyAlert()
+        setTimeout(() => {showCopyAlert()}, 2000)
     }
 }
 
+function showCopyAlert() {
+    let phone = document.getElementById('phone');
+    phone.classList.toggle('copied');
+}
+
+function toggleDonateButton {
+    
+}
