@@ -64,7 +64,8 @@ label {
   justify-content: center;
 }
 
-input[type="button"] {
+input[type="button"],
+button {
   font-family: 'Poppins', sans-serif;
 	font-weight: 400;
 	font-size: 17px;
@@ -79,7 +80,8 @@ input[type="button"] {
   transition: all 0.3s ease;
 }
 
-input[type="button"]:hover {
+input[type="button"]:hover,
+button:hover {
   border: 1px solid #999;
 }
 
@@ -166,6 +168,42 @@ input[type="checkbox"] {
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
+}
+
+input[type="text"].search {
+  width: 95%;
+  margin-top: 5px;
+  height: 30px;
+  background-color: transparent;
+  border: 2px solid #eee;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 1.7;
+  letter-spacing: 2px;
+	color: #c4c3ca;
+  background-color: transparent;
+  color: #eee;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+::placeholder {
+  color: #eee;
+  transition: all .5s ease;
+}
+
+input[type="text"].search:focus {
+  outline: none;
+  border-color: rgba(16, 16, 16, 0.7);
+  border-bottom: 1px solid #eee;
+}
+
+input[type="text"].search:focus::placeholder {
+  opacity: 0.5;
 }
 
 /* #Colors
@@ -287,7 +325,13 @@ input[type="checkbox"] {
 .box.wisteria.selected,
 .box.emerland.selected,
 .box.belizehole.selected,
-.box.sunflower.selected{
+.box.sunflower.selected,
+.box.alizarin.found,
+.box.grey.found,
+.box.wisteria.found,
+.box.emerland.found,
+.box.belizehole.found,
+.box.sunflower.found {
   opacity: 1;
   min-height: 100px;
   max-width: 100%;
@@ -315,7 +359,13 @@ input[type="checkbox"] {
   .box.wisteria.selected,
   .box.emerland.selected,
   .box.belizehole.selected,
-  .box.sunflower.selected{
+  .box.sunflower.selected,
+  .box.alizarin.found,
+.box.grey.found,
+.box.wisteria.found,
+.box.emerland.found,
+.box.belizehole.found,
+.box.sunflower.found{
     min-width: calc(33.333333333333% - 20px);
   }
 }
@@ -331,7 +381,13 @@ input[type="checkbox"] {
   .box.wisteria.selected,
   .box.emerland.selected,
   .box.belizehole.selected,
-  .box.sunflower.selected{
+  .box.sunflower.selected,
+  .box.alizarin.found,
+.box.grey.found,
+.box.wisteria.found,
+.box.emerland.found,
+.box.belizehole.found,
+.box.sunflower.found{
     min-width: calc(50% - 20px);
   }
 }
@@ -347,7 +403,13 @@ input[type="checkbox"] {
   .box.wisteria.selected,
   .box.emerland.selected,
   .box.belizehole.selected,
-  .box.sunflower.selected
+  .box.sunflower.selected,
+  .box.alizarin.found,
+.box.grey.found,
+.box.wisteria.found,
+.box.emerland.found,
+.box.belizehole.found,
+.box.sunflower.found
   {
     min-width: calc(100% - 20px);
     min-height: 80px;
