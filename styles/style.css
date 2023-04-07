@@ -178,7 +178,7 @@ input[type="checkbox"] {
 }
 
 input[type="text"].search {
-  width: 95%;
+  width: 90%;
   margin-top: 5px;
   height: 30px;
   background-color: transparent;
@@ -196,6 +196,7 @@ input[type="text"].search {
   border-radius: 3px;
   transition: all 0.3s ease;
   text-align: center;
+  z-index: 15;
 }
 
 ::placeholder {
@@ -210,7 +211,7 @@ input[type="text"].search:focus {
 }
 
 input[type="text"].search:focus::placeholder {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 /* #Colors

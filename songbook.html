@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="/js/script.js" defer></script>
     <script src="/js/navbar_change.js" defer type="module"></script>
-    <script src="/js/search.js" defer></script>
+    <script src="/js/search.js" defer type="module"></script>
 
     <title>караоке</title>
 </head>
@@ -32,10 +32,10 @@
                 <label for="color-6" id="label-6">русская поп-музыка</label>
                 <input class="checkbox-sunflower" type="checkbox" id="color-5"  />
                 <label for="color-5" id="label-5">разное</label>
-                <input type="text" id="search" class="search" onkeyup="searchResults()" placeholder="поиск песни" />
+                <input type="text" id="search" class="search" placeholder="поиск песни" />
                 <div class="section p-0 pt-2"></div>
                 <div id="button"> 
-                    <input type="button" onclick="randomSong()" value=" СЛУЧАЙНАЯ ПЕСНЯ ">
+                    <input type="button" id='random' onclick="randomSong()" value=" СЛУЧАЙНАЯ ПЕСНЯ ">
                 </div>
             </div>
         </div>

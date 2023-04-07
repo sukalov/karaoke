@@ -300,6 +300,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 
   const page = document.getElementsByClassName('justify-content-center')[0];
   const openLyrics = (url) => window.open(url, '_self').focus();
+  const searchBar = document.getElementById('search');
 
   // massive and ugly cycle, that goes
   // through our songbook-data and
@@ -363,7 +364,8 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
             }
         }
         checkboxes[i].classList.toggle('ischecked')
-        button.style = "opacity: 0; visibility: hidden";
+        // button.style = "opacity: 0; visibility: hidden";
+        searchBar.style = 'display: none'
 
         let ifChecked = 0; // how many categories are selected
         for(let j = 0; j < checkboxes.length; j++){
@@ -373,8 +375,10 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         }
         if (ifChecked == 0) {
             button.style = "opacity: 1; visibility: visible"
+            searchBar.style = 'display: ""'
         } else {
             button.style = "opacity: 0; visibility: hidden"
+            searchBar.style = 'display: none'
         }
         
     });
@@ -394,6 +398,4 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     // console.log(song);
 };
 
-const navBarChange = () => {
 
-};

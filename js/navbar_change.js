@@ -4,6 +4,7 @@ const c3 = document.getElementById('label-3');
 const c4 = document.getElementById('label-4');
 const c5 = document.getElementById('label-5');
 const c6 = document.getElementById('label-6');
+const search = document.getElementById('search');
 const labels = [c1, c2, c3, c4, c5, c6];
 const labelsText = ['СОВЕТСКОЕ', 'РУССКИЙ РОК', 'ЗАРУБЕЖНОЕ', 'ДЕТСКИЕ ПЕСНИ', 'РАЗНОЕ', 'РУССКАЯ ПОП-МУЗЫКА']
 const positions = ['14.285714285714286',
@@ -14,7 +15,7 @@ const positions = ['14.285714285714286',
    '85.71428571428572']
 
 
-const squeezeNavbar = () => {
+export const squeezeNavbar = () => {
     for (let i = 0; i < labels.length; i++){
         labels[i].innerText = '';
         labels[i].style = `
@@ -33,14 +34,22 @@ const squeezeNavbar = () => {
     }
 }
 
-const unSqueezeNavbar = () => {
+export const unSqueezeNavbar = () => {
     for (let i = 0; i < labels.length; i++){
         labels[i].innerText = labelsText[i];
         labels[i].style = '';
     }
 }
 
-window.onscroll = function() {scrollFunction()};
+
+search.addEventListener('blur', () =>{
+    window.onscroll = function() {scrollFunction()};
+});
+
+search.addEventListener('focus', () =>{
+    window.onscroll = function() {};
+});
+
 function scrollFunction() {
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         squeezeNavbar()
