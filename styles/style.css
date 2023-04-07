@@ -178,8 +178,9 @@ input[type="checkbox"] {
 }
 
 input[type="text"].search {
-  width: 90%;
-  margin-top: 5px;
+  width: 40%;
+  min-width: 220px;
+  margin: 5px;
   height: 30px;
   background-color: transparent;
   border: 2px solid #eee;
@@ -201,10 +202,11 @@ input[type="text"].search {
 
 ::placeholder {
   color: #eee;
-  transition: all .5s ease;
+  transition: all 1s ease;
 }
 
 input[type="text"].search:focus {
+  width: 90%;
   outline: none;
   border-color: rgba(16, 16, 16, 0.7);
   border-bottom: 1px solid #eee;
