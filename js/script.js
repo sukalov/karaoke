@@ -358,6 +358,8 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
   let checkboxes = document.querySelectorAll('[type="checkbox"]');
   for(let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener("click", function(){
+        allSongs.map(el => el.classList.contains('found') ? el.classList.toggle('found') : el)
+        searchBar.value = '';
         if (song != undefined) { // hiding randomSong
             if (song.classList.contains('selected')){
                 song.classList.toggle('selected');
@@ -365,7 +367,6 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         }
         checkboxes[i].classList.toggle('ischecked')
         // button.style = "opacity: 0; visibility: hidden";
-        searchBar.style = 'display: none'
 
         let ifChecked = 0; // how many categories are selected
         for(let j = 0; j < checkboxes.length; j++){
@@ -374,11 +375,9 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
             }
         }
         if (ifChecked == 0) {
-            button.style = "opacity: 1; visibility: visible"
-            searchBar.style = 'font-family: Arial, FontAwesome;'
+            button.style = "display: ''"
         } else {
-            button.style = "opacity: 0; visibility: hidden"
-            searchBar.style = 'display: none'
+            button.style = "display: none"
         }
         
     });
@@ -386,12 +385,16 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 
   // can be activated  from web-page only when
   // there is no song displayed
+  const allSongs = Array.from(document.getElementsByClassName('box'));
+  console.log(allSongs)
   const randomSong = () => {
     if (song != undefined) { // надо прописать заново, чтобы не множились песни при нескольких кликах
         if (song.classList.contains('selected')){
             song.classList.toggle('selected');
         }
     }
+    allSongs.map(el => el.classList.contains('found') ? el.classList.toggle('found') : el)
+    searchBar.value = '';
     const index = Math.floor(Math.random() * songs.length);
     song = document.getElementById(String(index));
     song.classList.toggle('selected');
