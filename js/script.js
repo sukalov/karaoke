@@ -375,7 +375,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         }
         if (ifChecked == 0) {
             button.style = "opacity: 1; visibility: visible"
-            searchBar.style = 'display: ""'
+            searchBar.style = 'font-family: Arial, FontAwesome;'
         } else {
             button.style = "opacity: 0; visibility: hidden"
             searchBar.style = 'display: none'
