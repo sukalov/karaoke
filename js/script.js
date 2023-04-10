@@ -379,14 +379,13 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
         } else {
             button.style = "display: none"
         }
-        
     });
   }
+
 
   // can be activated  from web-page only when
   // there is no song displayed
   const allSongs = Array.from(document.getElementsByClassName('box'));
-  console.log(allSongs)
   const randomSong = () => {
     if (song != undefined) { // надо прописать заново, чтобы не множились песни при нескольких кликах
         if (song.classList.contains('selected')){
