@@ -1,14 +1,13 @@
 const songbook = document.querySelectorAll('.box');
 const input = document.getElementById("search");
-const randomButton = document.getElementById("random");
+const randomButton = document.getElementById("button");
 const checkboxes = document.querySelectorAll('label');
 let checkboxesSelf = document.querySelectorAll('[type="checkbox"]');
 const songs = document.getElementsByClassName('box');
 input.addEventListener('keyup', () => {searchResults()});
 
-import {squeezeNavbar, unSqueezeNavbar} from '/js/navbar_change.js'
 
-export function searchResults() {
+function searchResults() {
     const filter = input.value.toLowerCase();
     for (let i = 0; i < songbook.length; i++) {
         let content = songbook[i].innerHTML.split(/<\S*>/)
@@ -47,7 +46,10 @@ const searching = () => {
 }
 
 const notSearching = () => {
-    unSqueezeNavbar();
+    // unSqueezeNavbar();
+    for(let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].style = 'display: ""'
+    }
     randomButton.style = 'display: ""'
 }
 
@@ -57,10 +59,9 @@ input.addEventListener("focus", function() {
     this.setSelectionRange(0, this.value.length); // select all text in the text input
   });
 
-  input.addEventListener('keypress', function (e) {
+  input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
     document.activeElement.blur(); // remove focus from the text input
-    randomButton.style = 'display: ""'
     }
 });
 

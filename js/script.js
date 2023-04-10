@@ -400,4 +400,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     // console.log(song);
 };
 
+const goBack = document.getElementById('back');
+goBack.addEventListener('click', function() {window.location.href = './'})
+
 
