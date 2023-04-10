@@ -15,7 +15,7 @@ const positions = ['14.285714285714286',
    '85.71428571428572']
 
 
-export const squeezeNavbar = () => {
+const squeezeNavbar = () => {
     for (let i = 0; i < labels.length; i++){
         labels[i].innerText = '';
         labels[i].style = `
@@ -34,7 +34,7 @@ export const squeezeNavbar = () => {
     }
 }
 
-export const unSqueezeNavbar = () => {
+const unSqueezeNavbar = () => {
     for (let i = 0; i < labels.length; i++){
         labels[i].innerText = labelsText[i];
         labels[i].style = '';
