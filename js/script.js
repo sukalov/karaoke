@@ -299,7 +299,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 разное,,чёрный ворон,,https://amdm.ru/akkordi/narodnye_i_zastolnye_pesni/173363/cherniy_voron/,`);
 
   const page = document.getElementsByClassName('justify-content-center')[0];
-  const openLyrics = (url) => window.open(url, '_self').focus();
+  const openLyrics = (url) => window.open(url, '_blank').focus();
   const searchBar = document.getElementById('search');
 
   // massive and ugly cycle, that goes
