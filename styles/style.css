@@ -300,8 +300,20 @@ input[type="text"].search:focus::placeholder {
   box-shadow: 6px 7px 28px 0 rgba(16, 16, 16, 0.7);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  overflow-y: auto;
-}
+  width: 100%;
+    height: 100%;
+    overflow: hidden;
+};
+
+.songcontent {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border: solid white 1px;
+  overflow-y: scroll;
+  padding-right: 0px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+};
 
 .box.alizarin {
   background-color: hsl(5, 57%, 51%);

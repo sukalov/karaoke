@@ -8,7 +8,8 @@ input.addEventListener('keyup', () => {searchResults()});
 
 
 function searchResults() {
-    const filter = input.value.toLowerCase();
+    const filter0 = input.value.toLowerCase().replace('е', '(е|ё)');
+    const filter = new RegExp(filter0)
     for (let i = 0; i < songbook.length; i++) {
         let content = songbook[i].innerHTML.split(/<\S*>/)
         content = content.filter(el => el != '').join(' ')

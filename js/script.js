@@ -330,6 +330,8 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
   // creates all the data div-blocks
   for(let i = 0; i < songs.length; i++) {
     const div = document.createElement("div");
+    const divSong = document.createElement("div");
+    divSong.classList.add('songcontent')
     if (songs[i]['ссылка'] != '') {
         div.style.cursor = 'pointer';
         div.addEventListener('click', () => {
@@ -346,8 +348,9 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     const songName = document.createElement ('h5');
     songName.innerText = songs[i]['песня'];
     if (songName.innerText == ' ') {songName.innerText = 'без названия'}
-    div.appendChild(artist);
-    div.appendChild(songName);
+    divSong.appendChild(artist);
+    divSong.appendChild(songName);
+    div.appendChild(divSong);
 
     switch (songs[i]['рубрика']){
         case 'советские песни':
