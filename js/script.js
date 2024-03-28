@@ -314,7 +314,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 разное,,мурка,,https://2.amdm.ru/akkordi/blatnye_pesni/15152/murka/,
 разное,,ой то не вечер,,"https://2.amdm.ru/akkordi/narodnye_i_zastolnye_pesni/166044/oy_to_ne_vecher/#:~:text=Am%20E%20%D0%9E%D0%B9%2C%20%D1%82%D0%BE%20%D0%BD%D0%B5%20%D0%B2%D0%B5%D1%87%D0%B5%D1%80.,%D0%9E%D1%85%2C%20%D0%B4%D0%B0%20%D0%B2%D0%BE%20%D1%81%D0%BD%D0%B5%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B8%D0%B4%D0%B5%D0%BB%D0%BE%D1%81%D1%8C.",
 разное,,ой цветёт калина в поле у ручья,,https://2.amdm.ru/akkordi/narodnye_i_zastolnye_pesni/24295/oy_cvetet_kalina/,
-разное,,очи чёрные,,https://www.google.com/search?q=%D0%BE%D1%87%D0%B8+%D1%87%D1%91%D1%80%D0%BD%D1%8B%D0%B5+%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D1%8B&oq=%D0%BE%D1%87%D1%82+%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B5+&aqs=chrome.3.69i57j46i13i512j0i13i512l2j46i13i512j0i13i512l3j46i13i512j0i13i512l4j0i13i30.5152j0j4&client=ms-android-oppo&sourceid=chrome-mobile&ie=UTF-8,
+разное,,очи чёрные,,https://tabs.ultimate-guitar.com/tab/2701530,
 разное,,сулико,,https://www.ackordofmine.ru/index/aljona_chugunova_suliko_tekst_pesni_s_akkordami/0-7096/,
 разное,,ты ж мэнэ пидманула,,https://2.amdm.ru/akkordi/kalevala/126484/ti_zh_mene_pidmanula/,
 разное,,цыпленок жареный,,https://2.amdm.ru/akkordi/andrey_makarevich/123334/ciplyonok_zhareniy/,
@@ -330,8 +330,6 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
   // creates all the data div-blocks
   for(let i = 0; i < songs.length; i++) {
     const div = document.createElement("div");
-    const divSong = document.createElement("div");
-    divSong.classList.add('songcontent')
     if (songs[i]['ссылка'] != '') {
         div.style.cursor = 'pointer';
         div.addEventListener('click', () => {
@@ -348,9 +346,8 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     const songName = document.createElement ('h5');
     songName.innerText = songs[i]['песня'];
     if (songName.innerText == ' ') {songName.innerText = 'без названия'}
-    divSong.appendChild(artist);
-    divSong.appendChild(songName);
-    div.appendChild(divSong);
+    div.appendChild(artist);
+    div.appendChild(songName);
 
     switch (songs[i]['рубрика']){
         case 'советские песни':
