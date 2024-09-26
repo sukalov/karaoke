@@ -234,7 +234,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 зарубежное,стромае,tout les memes ,,https://amdm.ru/akkordi/stromae/106815/tous_les_memes/,
 зарубежное,стромае,алёна даст,,https://amdm.ru/akkordi/stromae/112042/alors_on_danse/,
 русская поп-музыка,тату,покажи мне любовь,,https://amdm.ru/akkordi/taty/121203/ya_tvoya_ne_pervaya/,
-,буланова,не плачь,татьяна,https://amdm.ru/akkordi/tatyana_bulanova/3181/ne_plach/,
+русская поп-музыка,буланова,не плачь,татьяна,https://amdm.ru/akkordi/tatyana_bulanova/3181/ne_plach/,
 зарубежное,битлз,michelle,,https://amdm.ru/akkordi/the_beatles/102165/michelle/,
 зарубежное,битлз,hey jude,,https://amdm.ru/akkordi/the_beatles/2717/hey_jude/,
 зарубежное,битлз,yellow submarine,,https://amdm.ru/akkordi/the_beatles/90595/yellow_submarine/,
