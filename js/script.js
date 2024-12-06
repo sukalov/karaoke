@@ -1,4 +1,4 @@
-const songs = d3.csvParse(`рубрика,исполнитель,песня,имя,ссылка,доп аккорды,ID
+const songs = d3.csvParse(`рубрика,исполнитель,песня,имя,ссылка,доп аккорды,id
 детские песни,"из к/ф ""красная шапочка""",песня звездочета,,https://123.amdm.ru/akkordi/detskie_pesni/172710/pesenka_zvezdocheta_iz_kf_krasnaya_shapochka/,,wyu2yq
 детские песни,"из к/ф ""красная шапочка""",песня красной шапочки (если долго-долго-долго),,https://123.amdm.ru/akkordi/pesni_iz_kino_i_multfilmov/14767/pesenka_krasnoy_shapochki_kf_pro_krasnuy_shapochku/,,sfc62b
 детские песни,"из к/ф ""маленький мук""",дорога добра (спроси у жизни строгой),,https://123.amdm.ru/akkordi/pesni_iz_kino_i_multfilmov/94949/doroga_dobra_iz_kf_priklycheniya_malenkogo_muka/,,bq83tk
@@ -347,7 +347,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
 русская поп-музыка,мираж,музыка нас связала,,https://123.amdm.ru/akkordi/mirazh/93508/muzika_nas_svyazala/,,8hnrhn`);
 
   const page = document.getElementsByClassName('justify-content-center')[0];
-  const openLyrics = (url) => window.open(url, '_blank').focus();
+  const openLink = (url) => window.open(url, '_blank').focus();
   const searchBar = document.getElementById('search');
 
   // massive and ugly cycle, that goes
@@ -358,7 +358,7 @@ const songs = d3.csvParse(`рубрика,исполнитель,песня,им
     if (songs[i]['ссылка'] != '') {
         div.style.cursor = 'pointer';
         div.addEventListener('click', () => {
-        openLyrics(songs[i]['ссылка']);
+        openLink(`https://t.me/karaoke_sindikat_bot?start=${songs[i]['id']}`);
         })
     } else {console.log(`аккордов для ${songs[i]['исполнитель']} ${songs[i]['песня']} нету`)}
     div.className = "col";
