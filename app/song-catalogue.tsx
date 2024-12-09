@@ -19,6 +19,7 @@ import { Footer } from "./footer";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ScrollAreaCompact } from "@/components/ui/scroll-area-compact";
 import { alumni } from "./fonts/fonts";
+import { useAdvancedSearch } from "@/hooks/use-advanced-search";
 
 const categories: Array<{ name: Category | "все песни"; color: string }> = [
   { name: "все песни", color: "gray-600" },
@@ -31,17 +32,15 @@ const categories: Array<{ name: Category | "все песни"; color: string }>
 ];
 
 export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
-  const [searchTerm, setSearchTerm] = useState("");
   const [currentCategory, setCurrentCategory] = useState("все песни");
   const [menuOpen, setMenuOpen] = useState(false);
   const [randomSong, setRandomSong] = useState<(typeof songs)[0] | null>(null);
   const [isRandomSongOpen, setIsRandomSongOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width: 640px)");
 
-  const filteredSongs = songs.filter(
-    (song) =>
-      (currentCategory === "все песни" || song.category === currentCategory) &&
-      song.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const { filteredSongs, searchTerm, setSearchTerm } = useAdvancedSearch(
+    songs,
+    currentCategory
   );
 
   const getRandomSong = () => {
@@ -79,7 +78,7 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
         <div className="bg-blue-800"></div>
         <div className="bg-sky-500"></div>
       </VisuallyHidden>
-      <h1 className={`text-3xl mb-4 ${alumni.className}`}>
+      <h1 className={`text-4xl mb-3 ${alumni.className}`}>
         <span className="align-middle">$</span>онгбук
       </h1>
       <div className="flex flex-col sm:flex-row gap-4">
@@ -164,7 +163,7 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
       )}
       {isMobile && (
         <Drawer open={menuOpen} onOpenChange={setMenuOpen}>
-           <VisuallyHidden>
+          <VisuallyHidden>
             <DialogTitle>жанры</DialogTitle>
           </VisuallyHidden>
           <DrawerContent className="my-16">
@@ -263,7 +262,9 @@ function SongCard({
 }
 
 function GiveMoneyButton() {
-  return (<Button className="absolute top-4 right-4">
-    прость дать денег музыкантам
-  </Button>)
+  return (
+    <Button className="absolute top-5 right-4">
+      просто дать денег музыкантам
+    </Button>
+  );
 }
