@@ -18,6 +18,7 @@ import { ClassNameValue } from "tailwind-merge";
 import { Footer } from "./footer";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ScrollAreaCompact } from "@/components/ui/scroll-area-compact";
+import { alumni } from "./fonts/fonts";
 
 const categories: Array<{ name: Category | "все песни"; color: string }> = [
   { name: "все песни", color: "gray-600" },
@@ -49,10 +50,6 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
     setIsRandomSongOpen(true);
   };
 
-  const closeRandomSong = () => {
-    setIsRandomSongOpen(false);
-  };
-
   const RandomSongContent = () => (
     <div className="flex flex-col items-center p-4 w-full border-red-500">
       {randomSong && (
@@ -82,8 +79,8 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
         <div className="bg-blue-800"></div>
         <div className="bg-sky-500"></div>
       </VisuallyHidden>
-      <h1 className="text-2xl font-extrabold mb-4 font-mono">
-        <span className="font-extrabold">$</span>онгбук
+      <h1 className={`text-3xl mb-4 ${alumni.className}`}>
+        <span className="align-middle">$</span>онгбук
       </h1>
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-grow">
