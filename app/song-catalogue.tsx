@@ -277,6 +277,7 @@ function SongCard({
     <a
       // href={`https://t.me/karaoke_sindikat_bot?start=${song.id}`}
       href={song.link}
+      target="_blank"
       className="block"
     >
       <Card
