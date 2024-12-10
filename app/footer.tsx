@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="mt-4 sm:mt-3 sm:h-8 py-4 sm:border-t max-h-12 p-2">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-        <div className="flex space-x-4 mb-2 sm:mb-0 w-full sm:w-auto">
+        <div className="flex space-x-3 mb-2 sm:mb-0 w-full sm:w-auto">
           <div className="text-sm text-gray-500">
             <span className="align-middle">&copy;</span>&nbsp;московский
             музыкальный синдикат
@@ -45,6 +45,9 @@ export function Footer() {
             >
               sukalov.dev
             </a>
+          </div>
+          <div className="text-sm text-gray-500 mb-2 sm:mb-0">
+            2024
           </div>
         </div>
       </div>
