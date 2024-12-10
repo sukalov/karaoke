@@ -13,6 +13,7 @@ export function Footer() {
           <a
             href="https://t.me/povsemmestam"
             target="_blank"
+            aria-label="телеграм канал про наши мероприятия"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700 align-middle"
           >
@@ -21,6 +22,7 @@ export function Footer() {
           <a
             href="https://instagram.com/via_na_prazdnik"
             target="_blank"
+            aria-label="инстаграм виа"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700"
           >
@@ -41,6 +43,7 @@ export function Footer() {
             by&nbsp;
             <a
               href="https://sukalov.dev"
+              aria-label="автор сайта"
               className=" underline-offset-2 underline hover:text-gray-700 transition-all"
             >
               sukalov.dev

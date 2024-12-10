@@ -148,6 +148,9 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
           </ScrollArea>
         </div>
         <ScrollArea className="h-[calc(100svh-11.5rem)] sm:h-[calc(100svh-11.5rem)]">
+          <VisuallyHidden>
+            <h2>список песен для караоке</h2>
+          </VisuallyHidden>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredSongs.map((song) => (
               <SongCard key={song.id} song={song} />
@@ -180,7 +183,7 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
             <DialogTitle>жанры</DialogTitle>
           </VisuallyHidden>
           <DrawerContent>
-            <ScrollArea className="h-full pb-6 pl-6 border-red-400">
+            <ScrollArea className="h-full pb-6 px-6 border-red-400">
               <div className="space-y-2 p-2">
                 {categories.map((category) => (
                   <CategoryButton
@@ -279,6 +282,7 @@ function SongCard({
       href={song.link}
       target="_blank"
       className="block"
+      aria-label={`слова и аккорды песни ${song.title}`}
     >
       <Card
         className={cn(
