@@ -274,7 +274,8 @@ function SongCard({
   const artist = song.artist ? artistFull : "неизвествен";
   return (
     <a
-      href={`https://t.me/karaoke_sindikat_bot?start=${song.id}`}
+      // href={`https://t.me/karaoke_sindikat_bot?start=${song.id}`}
+      href={song.link}
       className="block"
     >
       <Card
@@ -287,7 +288,9 @@ function SongCard({
           <div className={`absolute h-full w-3 bg-${category?.color}`}></div>
           <div className="p-4 m-auto pl-5 h-24 flex flex-col">
             <h3 className="font-medium text-balance">{song.title}</h3>
-            <p className="text-sm text-muted-foreground text-balance">{artist}</p>
+            <p className="text-sm text-muted-foreground text-balance">
+              {artist}
+            </p>
           </div>
         </ScrollArea>
       </Card>
