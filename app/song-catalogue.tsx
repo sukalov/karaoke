@@ -61,7 +61,8 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
   );
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container relative mx-auto p-4">
+      <GiveMoneyButton />
       <VisuallyHidden>
         <div className="border-yellow-500"></div>
         <div className="border-gray-600"></div>
@@ -210,7 +211,6 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
         </Drawer>
       )}
       <Footer />
-      <GiveMoneyButton />
     </div>
   );
 }
