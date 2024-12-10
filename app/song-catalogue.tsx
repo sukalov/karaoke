@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -60,22 +60,6 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
   return (
     <div className="container relative mx-auto p-4">
       <GiveMoneyButton />
-      <VisuallyHidden>
-        <div className="border-yellow-500"></div>
-        <div className="border-gray-600"></div>
-        <div className="border-red-500"></div>
-        <div className="border-green-500"></div>
-        <div className="border-purple-500"></div>
-        <div className="border-blue-800"></div>
-        <div className="border-sky-500"></div>
-        <div className="bg-yellow-500"></div>
-        <div className="bg-gray-600"></div>
-        <div className="bg-red-500"></div>
-        <div className="bg-green-500"></div>
-        <div className="bg-purple-500"></div>
-        <div className="bg-blue-800"></div>
-        <div className="bg-sky-500"></div>
-      </VisuallyHidden>
       <h1 className={`text-4xl mb-3 ${alumni.className}`}>
         <span className="align-middle">$</span>онгбук
       </h1>
@@ -92,68 +76,59 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
             className="pl-8"
           />
         </div>
-        {isMobile ? (
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              onClick={() => setMenuOpen(true)}
-              className="flex-1 relative"
-            >
-              {currentCategory !== "все песни" ? (
-                <div
-                  className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 bg-${getColor(
-                    currentCategory
-                  )}`}
-                />
-              ) : (
-                <div
-                  className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 overflow-hidden bg-${getColor(
-                    currentCategory
-                  )}`}
-                >
-                  <div className="w-full h-1.5 bg-red-500"></div>
-                  <div className="w-full h-1.5 bg-purple-500"></div>
-                  <div className="w-full h-1.5 bg-blue-800"></div>
-                  <div className="w-full h-1.5 bg-green-500"></div>
-                  <div className="w-full h-1.5 bg-sky-500"></div>
-                  <div className="w-full h-1.5 bg-yellow-500"></div>
-                </div>
-              )}
-              жанры
-            </Button>
-            <Button
-              variant="outline"
-              className="flex-1"
-              onClick={getRandomSong}
-            >
-              случайная песня
-            </Button>
-          </div>
-        ) : (
-          <Button variant="outline" onClick={getRandomSong}>
+        <div className="flex gap-2 sm:hidden">
+          <Button
+            variant="outline"
+            onClick={() => setMenuOpen(true)}
+            className="flex-1 relative"
+          >
+            {currentCategory !== "все песни" ? (
+              <div
+                className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 bg-${getColor(
+                  currentCategory
+                )}`}
+              />
+            ) : (
+              <div
+                className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 overflow-hidden bg-${getColor(
+                  currentCategory
+                )}`}
+              >
+                <div className="w-full h-1.5 bg-red-500"></div>
+                <div className="w-full h-1.5 bg-purple-500"></div>
+                <div className="w-full h-1.5 bg-blue-800"></div>
+                <div className="w-full h-1.5 bg-green-500"></div>
+                <div className="w-full h-1.5 bg-sky-500"></div>
+                <div className="w-full h-1.5 bg-yellow-500"></div>
+              </div>
+            )}
+            жанры
+          </Button>
+          <Button variant="outline" className="flex-1" onClick={getRandomSong}>
             случайная песня
           </Button>
-        )}
+        </div>
+        <Button className="hidden" variant="outline" onClick={getRandomSong}>
+          случайная песня
+        </Button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-[190px_1fr] gap-4 pt-4">
-        {!isMobile && (
-          <div className="sm:block">
-            <ScrollArea className="h-[calc(100vh-200px)]">
-              <div className="space-y-2">
-                {categories.map((category) => (
-                  <CategoryButton
-                    key={category.name}
-                    isActive={currentCategory === category.name}
-                    onClick={() => setCurrentCategory(category.name)}
-                    color={category.color}
-                    isAll={category.name === "все песни"}
-                    categoryName={category.name}
-                  />
-                ))}
-              </div>
-            </ScrollArea>
-          </div>
-        )}
+        <div className="sm:block hidden">
+          <ScrollArea className="h-[calc(100vh-200px)]">
+            <div className="space-y-2">
+              {categories.map((category) => (
+                <CategoryButton
+                  key={category.name}
+                  isActive={currentCategory === category.name}
+                  onClick={() => setCurrentCategory(category.name)}
+                  color={category.color}
+                  isAll={category.name === "все песни"}
+                  categoryName={category.name}
+                />
+              ))}
+            </div>
+          </ScrollArea>
+        </div>
         <ScrollArea className="h-[calc(100svh-200px)] sm:h-[calc(100svh-180px)]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredSongs.map((song) => (
