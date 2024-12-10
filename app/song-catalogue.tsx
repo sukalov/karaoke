@@ -40,9 +40,6 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
     currentCategory
   );
 
-  const getColor = (category: string) =>
-    categories.find((c) => c.name === category)?.color;
-
   const getRandomSong = () => {
     const newRandomSong = songs[Math.floor(Math.random() * songs.length)];
     setRandomSong(newRandomSong);
@@ -150,9 +147,8 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
                     onClick={() => setCurrentCategory(category.name)}
                     color={category.color}
                     isAll={category.name === "все песни"}
-                  >
-                    {category.name}
-                  </CategoryButton>
+                    categoryName={category.name}
+                  />
                 ))}
               </div>
             </ScrollArea>
@@ -201,9 +197,8 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
                     color={category.color}
                     isAll={category.name === "все песни"}
                     className="text-lg"
-                  >
-                    {category.name}
-                  </CategoryButton>
+                    categoryName={category.name}
+                  ></CategoryButton>
                 ))}
               </div>
             </ScrollArea>
@@ -219,30 +214,46 @@ function CategoryButton({
   isActive,
   onClick,
   color,
-  children,
   isAll,
   className,
+  categoryName,
 }: {
   isActive: boolean;
   onClick: () => void;
   color: string;
-  children: ReactNode;
   isAll: boolean;
   className?: ClassNameValue;
+  categoryName: string;
 }) {
   return (
     <Button
       variant="ghost"
       className={cn(
-        `w-full border-l-4 rounded-sm justify-start border-${color} 
-      ${isAll && "font-bold"}
-      ${isActive ? "border-opacity-100" : "border-opacity-0"} 
+        `w-full rounded-sm relative justify-start ${isAll && "font-bold"}
       `,
         className
       )}
       onClick={onClick}
     >
-      {children}
+      {categoryName !== "все песни" && isActive ? (
+        <div
+          className={`absolute rounded-tl-md rounded-bl-md h-full w-1.5 left-0 bg-${color}`}
+        />
+      ) : (
+        isActive && (
+          <div
+            className={`absolute rounded-tl-md rounded-bl-md h-full w-1.5 left-0 overflow-hidden bg-${color}`}
+          >
+            <div className="w-full h-1.5 bg-red-500"></div>
+            <div className="w-full h-1.5 bg-purple-500"></div>
+            <div className="w-full h-1.5 bg-blue-800"></div>
+            <div className="w-full h-1.5 bg-green-500"></div>
+            <div className="w-full h-1.5 bg-sky-500"></div>
+            <div className="w-full h-1.5 bg-yellow-500"></div>
+          </div>
+        )
+      )}
+      {categoryName}
     </Button>
   );
 }
@@ -270,8 +281,8 @@ function SongCard({
         )}
       >
         <ScrollArea>
-          <div className={`absolute h-full w-4 bg-${category?.color}`}></div>
-          <div className="p-4 pl-6 h-24">
+          <div className={`absolute h-full w-3 bg-${category?.color}`}></div>
+          <div className="p-4 m-auto pl-5 h-24">
             <h3 className="font-medium">{song.title}</h3>
             <p className="text-sm text-muted-foreground">{artist}</p>
           </div>
@@ -288,3 +299,6 @@ function GiveMoneyButton() {
     </Button>
   );
 }
+
+const getColor = (category: string) =>
+  categories.find((c) => c.name === category)?.color;
