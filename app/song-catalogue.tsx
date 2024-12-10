@@ -158,8 +158,8 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
           <VisuallyHidden>
             <DialogTitle>жанры</DialogTitle>
           </VisuallyHidden>
-          <DrawerContent className="my-16">
-            <ScrollArea className="h-full pb-4 pl-6 border-red-400">
+          <DrawerContent>
+            <ScrollArea className="h-full pb-6 pl-6 border-red-400">
               <div className="space-y-2 p-2">
                 {categories.map((category) => (
                   <CategoryButton
