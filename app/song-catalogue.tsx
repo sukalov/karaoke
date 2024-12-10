@@ -87,6 +87,7 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-8"
+            aria-label="поиск по песням"
           />
         </div>
         <div className="flex gap-2 sm:hidden">
