@@ -3,11 +3,10 @@
 import { ReactNode, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "@/components/ui/card";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { Menu, Search } from "lucide-react";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Search } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Category } from "@/types/types";
 import { cn } from "@/lib/utils";
@@ -16,7 +15,6 @@ import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { ClassNameValue } from "tailwind-merge";
 import { Footer } from "./footer";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { ScrollAreaCompact } from "@/components/ui/scroll-area-compact";
 import { alumni } from "./fonts/fonts";
 import { useAdvancedSearch } from "@/hooks/use-advanced-search";
 
@@ -271,13 +269,13 @@ function SongCard({
           className
         )}
       >
-        <ScrollAreaCompact>
+        <ScrollArea>
           <div className={`absolute h-full w-4 bg-${category?.color}`}></div>
           <div className="p-4 pl-6 h-24">
             <h3 className="font-medium">{song.title}</h3>
             <p className="text-sm text-muted-foreground">{artist}</p>
           </div>
-        </ScrollAreaCompact>
+        </ScrollArea>
       </Card>
     </a>
   );
