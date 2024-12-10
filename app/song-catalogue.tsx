@@ -10,10 +10,9 @@ import { Menu, Search } from "lucide-react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Category } from "@/types/types";
-import { cn, Song } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { SongbookSelect } from "@/db/schema";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
-import { Drawer as Dr } from "vaul";
 import { ClassNameValue } from "tailwind-merge";
 import { Footer } from "./footer";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -42,6 +41,9 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
     songs,
     currentCategory
   );
+
+  const getColor = (category: string) =>
+    categories.find((c) => c.name === category)?.color;
 
   const getRandomSong = () => {
     const newRandomSong = songs[Math.floor(Math.random() * songs.length)];
@@ -98,9 +100,29 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
           <div className="flex gap-2">
             <Button
               variant="outline"
-              className="flex-1"
               onClick={() => setMenuOpen(true)}
+              className="flex-1 relative"
             >
+              {currentCategory !== "все песни" ? (
+                <div
+                  className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 bg-${getColor(
+                    currentCategory
+                  )}`}
+                />
+              ) : (
+                <div
+                  className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 overflow-hidden bg-${getColor(
+                    currentCategory
+                  )}`}
+                >
+                  <div className="w-full h-1.5 bg-red-500"></div>
+                  <div className="w-full h-1.5 bg-purple-500"></div>
+                  <div className="w-full h-1.5 bg-blue-800"></div>
+                  <div className="w-full h-1.5 bg-green-500"></div>
+                  <div className="w-full h-1.5 bg-sky-500"></div>
+                  <div className="w-full h-1.5 bg-yellow-500"></div>
+                </div>
+              )}
               жанры
             </Button>
             <Button
