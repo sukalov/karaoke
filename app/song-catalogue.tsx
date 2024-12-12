@@ -151,11 +151,20 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
           <VisuallyHidden>
             <h2>список песен для караоке</h2>
           </VisuallyHidden>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredSongs.map((song) => (
-              <SongCard key={song.id} song={song} />
-            ))}
-          </div>
+          {filteredSongs.length <= 0 ? (
+            <>
+              <p className="">кажется этого у нас нет...</p>
+              <p className="text-balance">
+                проверьте, что поиск идёт по категории "все песни"
+              </p>
+            </>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredSongs.map((song) => (
+                <SongCard key={song.id} song={song} />
+              ))}
+            </div>
+          )}
         </ScrollArea>
       </div>
       {isMobile ? (
