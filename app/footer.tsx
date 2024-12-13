@@ -49,9 +49,7 @@ export function Footer() {
               sukalov.dev
             </a>
           </div>
-          <div className="text-sm text-gray-500 mb-2 sm:mb-0">
-            2024
-          </div>
+          <div className="text-sm text-gray-500 mb-2 sm:mb-0">2024</div>
         </div>
       </div>
     </footer>
