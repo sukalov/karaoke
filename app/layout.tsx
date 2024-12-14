@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import 'core-js/es/array'
-import 'core-js/es/object'
-import 'core-js/es/promise'
-import 'regenerator-runtime/runtime'
+import "core-js/es/array";
+import "core-js/es/object";
+import "core-js/es/promise";
+import "regenerator-runtime/runtime";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,10 +34,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <main>
-            {children}
-          </main>
+        <main>{children}</main>
       </body>
+      <GoogleAnalytics gaId="G-MZCC5VJHV4" />
     </html>
   );
 }
