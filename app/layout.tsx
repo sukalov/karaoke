@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import 'core-js/es/array'
+import 'core-js/es/object'
+import 'core-js/es/promise'
+import 'regenerator-runtime/runtime'
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
