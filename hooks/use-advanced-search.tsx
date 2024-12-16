@@ -7,10 +7,8 @@ const normalizeCyrillic = (str: string) => {
   return str
     .toLowerCase()
     .replace(/ё/g, "е") // Replace 'ё' with 'е'
-    .replace(/[ий]/g, "и") // Normalize similar Cyrillic characters
     .normalize("NFD") // Decompose combined characters
     .replace(/[\u0300-\u036f]/g, "") // Remove diacritical marks
-    .replace(/[ъь]/g, ""); // Remove soft and hard signs
 };
 
 export const useAdvancedSearch = (
