@@ -1,10 +1,11 @@
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Drawer, DrawerContent } from "../ui/drawer";
-import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
-import SongCard from "../song-card";
-import { Dispatch, SetStateAction } from "react";
 import { SongbookSelect } from "@/db/schema";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Dispatch, SetStateAction } from "react";
+
+import SongCard from "../song-card";
+import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
+import { Drawer, DrawerContent } from "../ui/drawer";
 
 export default function RandomSongDialog({
   isRandomSongOpen,
@@ -23,7 +24,9 @@ export default function RandomSongDialog({
           <DialogTitle>случайная песня</DialogTitle>
         </VisuallyHidden>
         <DrawerContent className="w-full">
-          <RandomSongContent randomSong={randomSong} />
+          <div className="h-[30svh] flex items-center justify-center">
+            <RandomSongContent randomSong={randomSong} />
+          </div>
         </DrawerContent>
       </Drawer>
     );
