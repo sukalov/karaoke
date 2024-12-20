@@ -5,9 +5,11 @@ import { Dispatch, SetStateAction } from "react";
 const SearchBar = ({
   searchTerm,
   setSearchTerm,
+  setCurrentCategory,
 }: {
   searchTerm: string;
   setSearchTerm: (_term: string) => void;
+  setCurrentCategory: (_term: string) => void;
 }) => (
   <div className="relative flex-grow">
     <Search
@@ -17,7 +19,10 @@ const SearchBar = ({
     <Input
       type="search"
       value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
+      onChange={(e) => {
+        setCurrentCategory("все песни");
+        setSearchTerm(e.target.value);
+      }}
       className="pl-8"
       aria-label="поиск по песням"
     />
