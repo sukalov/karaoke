@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
@@ -48,7 +48,11 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
       </h1>
       <DonateButton setIsDonateOpen={setIsDonateOpen} />
       <header className="flex flex-col sm:flex-row gap-4">
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} setCurrentCategory={setCurrentCategory} />
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          setCurrentCategory={setCurrentCategory}
+        />
         <div className="flex gap-2 sm:hidden">
           <SelectCategoryButton
             setMenuOpen={setMenuOpen}

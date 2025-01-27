@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+import * as React from "react";
+import { Drawer as DrawerPrimitive } from "vaul";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const TopDrawer = ({
   shouldScaleBackground = true,
@@ -14,14 +14,10 @@ const TopDrawer = ({
     shouldScaleBackground={shouldScaleBackground}
     {...props}
   />
-)
-TopDrawer.displayName = "TopDrawer"
+);
+TopDrawer.displayName = "TopDrawer";
 
-const TopDrawerTrigger = DrawerPrimitive.Trigger
-
-const TopDrawerPortal = DrawerPrimitive.Portal
-
-const TopDrawerClose = DrawerPrimitive.Close
+const TopDrawerPortal = DrawerPrimitive.Portal;
 
 const TopDrawerOverlay = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Overlay>,
@@ -32,8 +28,8 @@ const TopDrawerOverlay = React.forwardRef<
     className={cn("fixed inset-0 z-50 bg-black/80", className)}
     {...props}
   />
-))
-TopDrawerOverlay.displayName = "TopDrawerOverlay"
+));
+TopDrawerOverlay.displayName = "TopDrawerOverlay";
 
 const TopDrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
@@ -53,8 +49,8 @@ const TopDrawerContent = React.forwardRef<
       <div className="mx-auto mb-4 mt-2 h-2 w-[100px] rounded-full bg-muted" />
     </DrawerPrimitive.Content>
   </TopDrawerPortal>
-))
-TopDrawerContent.displayName = "TopDrawerContent"
+));
+TopDrawerContent.displayName = "TopDrawerContent";
 
 const TopDrawerHeader = ({
   className,
@@ -64,19 +60,16 @@ const TopDrawerHeader = ({
     className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
     {...props}
   />
-)
-TopDrawerHeader.displayName = "TopDrawerHeader"
+);
+TopDrawerHeader.displayName = "TopDrawerHeader";
 
 const TopDrawerFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("flex flex-col gap-2 p-4", className)}
-    {...props}
-  />
-)
-TopDrawerFooter.displayName = "TopDrawerFooter"
+  <div className={cn("flex flex-col gap-2 p-4", className)} {...props} />
+);
+TopDrawerFooter.displayName = "TopDrawerFooter";
 
 const TopDrawerTitle = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Title>,
@@ -90,8 +83,8 @@ const TopDrawerTitle = React.forwardRef<
     )}
     {...props}
   />
-))
-TopDrawerTitle.displayName = "TopDrawerTitle"
+));
+TopDrawerTitle.displayName = "TopDrawerTitle";
 
 const TopDrawerDescription = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Description>,
@@ -102,11 +95,7 @@ const TopDrawerDescription = React.forwardRef<
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
-))
-TopDrawerDescription.displayName = "TopDrawerDescription"
+));
+TopDrawerDescription.displayName = "TopDrawerDescription";
 
-export {
-  TopDrawer,
-  TopDrawerContent,
-  TopDrawerHeader,
-}
+export { TopDrawer, TopDrawerContent, TopDrawerHeader };

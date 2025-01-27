@@ -2,3 +2,5 @@ node_modules
 .next
 .env
 .trunk
+.vercel
+.env*.local

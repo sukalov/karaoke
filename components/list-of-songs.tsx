@@ -12,7 +12,7 @@ const SongList = ({ filteredSongs }: { filteredSongs: SongbookSelect[] }) => (
       <div className="text-center sm:text-left">
         <p className="">кажется этого у нас нет...</p>
         <p className="text-balance pt-2">
-          проверьте, что поиск идёт по категории "все песни"
+          проверьте, что поиск идёт по категории &quot;все песни&quot;
         </p>
       </div>
     ) : (
