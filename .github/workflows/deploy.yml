@@ -4,6 +4,8 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  repository_dispatch:
+    types: [rebuild-trigger]
 
 permissions:
   contents: read
@@ -37,6 +39,9 @@ jobs:
         
       - name: build with next.js
         run: bun run build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
         
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
