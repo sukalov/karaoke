@@ -6,6 +6,7 @@ import "core-js/es/array";
 import "core-js/es/object";
 import "core-js/es/promise";
 import "regenerator-runtime/runtime";
+import { Suspense } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,7 +37,9 @@ export default function RootLayout({
       >
         <main>{children}</main>
       </body>
-      <GoogleAnalytics gaId="G-MZCC5VJHV4"/>
+      <Suspense>
+        <GoogleAnalytics gaId="G-MZCC5VJHV4" />
+      </Suspense>
     </html>
   );
 }
