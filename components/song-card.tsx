@@ -23,7 +23,7 @@ export default function SongCard({
       // href={song.link}
       target="_blank"
       className="block"
-      aria-label={`слова и аккорды песни ${song.title}`}
+      aria-label={`перейти в телеграм бот и записаться петь песню ${song.title}`}
     >
       <Card
         className={cn(
@@ -34,8 +34,8 @@ export default function SongCard({
         <ScrollArea>
           <div className={`absolute h-full w-3 bg-${category?.color}`}></div>
           <div className="p-4 m-auto pl-5 h-24 flex flex-col">
-            <h3 className="font-medium text-balance">{song.title}</h3>
-            <p className="text-sm text-muted-foreground text-balance">
+            <h3 className="font-medium text-balance lowercase">{song.title}</h3>
+            <p className="text-sm text-muted-foreground text-balance lowercase">
               {artist}
             </p>
           </div>
