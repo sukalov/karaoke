@@ -32,6 +32,7 @@ export function Footer() {
         <div className="flex gap-1 sm:gap-3 w-full sm:w-auto">
           <a
             href="https://github.com/sukalov/karaoke"
+            aria-label="исходный код этого сайта"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700"
