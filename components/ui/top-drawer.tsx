@@ -98,4 +98,4 @@ const TopDrawerDescription = React.forwardRef<
 ));
 TopDrawerDescription.displayName = "TopDrawerDescription";
 
-export { TopDrawer, TopDrawerContent, TopDrawerHeader };
+export { TopDrawer, TopDrawerContent };
