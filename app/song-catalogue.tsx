@@ -19,6 +19,7 @@ import SongList from "@/components/list-of-songs";
 import SearchBar from "@/components/search-bar";
 import SelectCategoryButton from "@/components/select-category-button";
 import DonateButton from "@/components/donate-button";
+import { BotOff } from "lucide-react";
 
 export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
   const [currentCategory, setCurrentCategory] = useState<
@@ -45,6 +46,8 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
     <div className="container relative mx-auto p-4">
       <h1 className={`text-4xl mb-3 ${alumni.className}`}>
         <span className="align-middle">$</span>онгбук
+        &nbsp;
+        <BotOff size={28} className="inline text-destructive"/>
       </h1>
       <DonateButton setIsDonateOpen={setIsDonateOpen} />
       <header className="flex flex-col sm:flex-row gap-4">
