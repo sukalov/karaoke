@@ -2,7 +2,7 @@ name: deploy karaoke songbook site to github pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "songbook"]
   workflow_dispatch:
   repository_dispatch:
     types: [rebuild-trigger]
@@ -28,17 +28,26 @@ jobs:
         with:
           ref: main
           path: main
+          fetch-depth: 0
       
       - name: checkout songbook branch
         uses: actions/checkout@v4
         with:
           ref: songbook
           path: songbook
+          fetch-depth: 0
       
       - name: setup bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
+          
+      - name: verify branches
+        run: |
+          echo "main branch commit:"
+          cd main && git log -1 --oneline
+          echo "songbook branch commit:"
+          cd ../songbook && git log -1 --oneline
           
       - name: install dependencies for main
         run: bun install
