@@ -2,7 +2,7 @@ name: deploy karaoke songbook site to github pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "songbook"]
   workflow_dispatch:
   repository_dispatch:
     types: [rebuild-trigger]
@@ -23,30 +23,69 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
     steps:
-      - name: checkout
+      - name: checkout main branch
         uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+          fetch-depth: 0
+      
+      - name: checkout songbook branch
+        uses: actions/checkout@v4
+        with:
+          ref: songbook
+          path: songbook
+          fetch-depth: 0
       
       - name: setup bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
           
-      - name: install dependencies
+      - name: verify branches
+        run: |
+          echo "main branch commit:"
+          cd main && git log -1 --oneline
+          echo "songbook branch commit:"
+          cd ../songbook && git log -1 --oneline
+          
+      - name: install dependencies for main
         run: bun install
+        working-directory: ./main
+        
+      - name: install dependencies for songbook
+        run: bun install
+        working-directory: ./songbook
         
       - name: setup pages
         uses: actions/configure-pages@v4
         
-      - name: build with next.js
+      - name: build main site
         run: bun run build
+        working-directory: ./main
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
+          
+      - name: build songbook site
+        run: bun run build
+        working-directory: ./songbook
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
+          NEXT_PUBLIC_BASE_PATH: /songbook
+        
+      - name: prepare combined deployment
+        run: |
+          mkdir -p ./combined
+          cp -r ./main/out/* ./combined/
+          mkdir -p ./combined/songbook
+          cp -r ./songbook/out/* ./combined/songbook/
         
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./combined
 
   deploy:
     environment:
