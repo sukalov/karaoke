@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: process.env.BRANCH_NAME === "songbook" ? "/songbook" : "",
+  assetPrefix: process.env.BRANCH_NAME === "songbook" ? "/songbook" : "",
 };
 
 export default nextConfig;
