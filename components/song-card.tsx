@@ -19,8 +19,8 @@ export default function SongCard({
   const artist = song.artist ? artistFull : "неизвествен";
   return (
     <a
-      href={`https://t.me/karaoke_sindikat_bot?start=${song.id}`}
-      // href={song.link}
+      // href={`https://t.me/karaoke_sindikat_bot?start=${song.id}`}
+      href={song.link}
       target="_blank"
       className="block"
       aria-label={`перейти в телеграм бот и записаться петь песню ${song.title}`}
