@@ -1,20 +1,17 @@
-import Link from "next/link";
-import { Dispatch, SetStateAction, useState } from "react";
-import { Button } from "../ui/button";
-import Image from "next/image";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
-import CopyToClipboard from "react-copy-to-clipboard";
-import { Check, Copy } from "lucide-react";
-import { TopDrawer, TopDrawerContent } from "../ui/top-drawer";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import SberSvg from "@/app/assets/sber.svg";
 import TinkoffSvg from "@/app/assets/tinkoff.svg";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Check, Copy } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Dispatch, SetStateAction, useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
+
+import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
+import { DrawerTitle } from "../ui/drawer";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import { TopDrawer, TopDrawerContent } from "../ui/top-drawer";
 
 export default function DonateDrawer({
   isMobile,
@@ -35,7 +32,7 @@ export default function DonateDrawer({
           onClose={() => setCopied(false)}
         >
           <VisuallyHidden>
-            <DialogTitle>пожертвования музыкантам</DialogTitle>
+            <DrawerTitle>пожертвования музыкантам</DrawerTitle>
           </VisuallyHidden>
           <TopDrawerContent>
             <DonateDialogContent copied={copied} setCopied={setCopied} />

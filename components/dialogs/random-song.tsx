@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 
 import SongCard from "../song-card";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
-import { Drawer, DrawerContent } from "../ui/drawer";
+import { Drawer, DrawerContent, DrawerTitle } from "../ui/drawer";
 
 export default function RandomSongDialog({
   isRandomSongOpen,
@@ -21,7 +21,7 @@ export default function RandomSongDialog({
     return (
       <Drawer open={isRandomSongOpen} onOpenChange={setIsRandomSongOpen}>
         <VisuallyHidden>
-          <DialogTitle>случайная песня</DialogTitle>
+          <DrawerTitle>случайная песня</DrawerTitle>
         </VisuallyHidden>
         <DrawerContent className="w-full">
           <div className="h-[30svh] flex items-center justify-center">
