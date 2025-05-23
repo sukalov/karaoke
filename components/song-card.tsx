@@ -40,7 +40,7 @@ export default function SongCard({
             </p>
             {song.additional_chords && (
               <p className="text-sm text-balance">
-                заметка: {song.additional_chords}
+                <span className="text-destructive">заметка:</span> {song.additional_chords}
               </p>
             )}
           </div>
