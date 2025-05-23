@@ -1,13 +1,13 @@
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Drawer, DrawerContent } from "../ui/drawer";
-import { DialogTitle } from "../ui/dialog";
-import { ScrollArea } from "../ui/scroll-area";
-import { Button } from "../ui/button";
-import { ClassNameValue } from "tailwind-merge";
+import { CATEGORIES } from "@/lib/categories";
 import { cn } from "@/lib/utils";
 import { Category } from "@/types/types";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Dispatch, SetStateAction } from "react";
-import { CATEGORIES } from "@/lib/categories";
+import { ClassNameValue } from "tailwind-merge";
+
+import { Button } from "../ui/button";
+import { Drawer, DrawerContent, DrawerTitle } from "../ui/drawer";
+import { ScrollArea } from "../ui/scroll-area";
 
 const ChooseCategoryDrawer = ({
   menuOpen,
@@ -23,7 +23,7 @@ const ChooseCategoryDrawer = ({
   return (
     <Drawer open={menuOpen} onOpenChange={setMenuOpen}>
       <VisuallyHidden>
-        <DialogTitle>жанры</DialogTitle>
+        <DrawerTitle>жанры</DrawerTitle>
       </VisuallyHidden>
       <DrawerContent>
         <ScrollArea className="h-full pb-6 px-6 border-red-400">
