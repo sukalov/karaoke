@@ -10,9 +10,10 @@ export const songbook = sqliteTable("songbook", {
   artist: text("artist"),
   artist_name: text("artist_name"),
   link: text("link").notNull(),
-  additional_chords: int("additional_chords"),
+  additional_chords: text("additional_chords"),
   excluded: int("excluded", { mode: "boolean" }).$default(() => false),
   counter: int("counter").$default(() => 0), // times this song was selected
+  created_at: int("created_at", { mode: "timestamp" }),
 });
 
 // id, chat_id, username, tg_name, saved_name, added_at
