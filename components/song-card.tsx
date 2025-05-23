@@ -38,6 +38,11 @@ export default function SongCard({
             <p className="text-sm text-muted-foreground text-balance lowercase">
               {artist}
             </p>
+            {song.additional_chords && (
+              <p className="text-sm text-balance">
+                заметка: {song.additional_chords}
+              </p>
+            )}
           </div>
         </ScrollArea>
       </Card>
