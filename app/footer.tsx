@@ -1,4 +1,4 @@
-import { Github, Send, Instagram } from "lucide-react";
+import { Github, Instagram, Send } from "lucide-react";
 
 export function Footer() {
   return (
@@ -6,8 +6,7 @@ export function Footer() {
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         <div className="flex space-x-3 mb-2 sm:mb-0 w-full sm:w-auto">
           <div className="text-sm text-gray-500">
-            <span className="align-middle">&copy;</span>&nbsp;московский
-            музыкальный синдикат
+            <span className="align-middle">&copy;</span>&nbsp;гастроли по москве
           </div>
           <div className="flex-grow sm:hidden"></div>
           <a
@@ -22,7 +21,7 @@ export function Footer() {
           <a
             href="https://instagram.com/via_na_prazdnik"
             target="_blank"
-            aria-label="инстаграм виа"
+            aria-label="инстаграм гастролей по москве"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700"
           >

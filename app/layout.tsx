@@ -15,9 +15,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "караоке от $индиката",
+  title: "сонгбук для караоке",
   description:
-    "сонгбук с песнями для караоке. проект московского музыкального синдиката",
+    "сонгбук с песнями для караоке \"гастроли по москве\"",
 };
 
 export default function RootLayout({
