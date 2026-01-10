@@ -19,6 +19,7 @@ import SongList from "@/components/list-of-songs";
 import SearchBar from "@/components/search-bar";
 import SelectCategoryButton from "@/components/select-category-button";
 import DonateButton from "@/components/donate-button";
+import PromoButton from "@/components/promo-button";
 
 export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
   const [currentCategory, setCurrentCategory] = useState<
@@ -98,6 +99,7 @@ export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
         setIsDonateOpen={setIsDonateOpen}
       />
       <Footer />
+      <PromoButton />
     </div>
   );
 }

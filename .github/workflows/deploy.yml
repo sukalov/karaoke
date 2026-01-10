@@ -5,7 +5,7 @@ on:
     branches: ["main", "songbook"]
   workflow_dispatch:
   repository_dispatch:
-    types: [rebuild-trigger]
+    types: [rebuild-trigger, show-promo, hide-promo]
 
 permissions:
   contents: read
@@ -22,6 +22,7 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
+      NEXT_PUBLIC_SHOW_PROMO: ${{ github.event.client_payload.promo || (github.event.action == 'show-promo' && 'true') || (github.event.action == 'hide-promo' && 'false') || 'false' }}
     steps:
       - name: checkout main branch
         uses: actions/checkout@v4
@@ -29,44 +30,45 @@ jobs:
           ref: main
           path: main
           fetch-depth: 0
-      
+
       - name: checkout songbook branch
         uses: actions/checkout@v4
         with:
           ref: songbook
           path: songbook
           fetch-depth: 0
-      
+
       - name: setup bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
-          
+
       - name: verify branches
         run: |
           echo "main branch commit:"
           cd main && git log -1 --oneline
           echo "songbook branch commit:"
           cd ../songbook && git log -1 --oneline
-          
+
       - name: install dependencies for main
         run: bun install
         working-directory: ./main
-        
+
       - name: install dependencies for songbook
         run: bun install
         working-directory: ./songbook
-        
+
       - name: setup pages
         uses: actions/configure-pages@v4
-        
+
       - name: build main site
         run: bun run build
         working-directory: ./main
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
-          
+          NEXT_PUBLIC_SHOW_PROMO: ${{ env.NEXT_PUBLIC_SHOW_PROMO }}
+
       - name: build songbook site
         run: bun run build
         working-directory: ./songbook
@@ -74,14 +76,15 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
           NEXT_PUBLIC_BASE_PATH: /songbook
-        
+          NEXT_PUBLIC_SHOW_PROMO: ${{ env.NEXT_PUBLIC_SHOW_PROMO }}
+
       - name: prepare combined deployment
         run: |
           mkdir -p ./combined
           cp -r ./main/out/* ./combined/
           mkdir -p ./combined/songbook
           cp -r ./songbook/out/* ./combined/songbook/
-        
+
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
