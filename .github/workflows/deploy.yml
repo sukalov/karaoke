@@ -82,7 +82,7 @@ jobs:
       - name: persist promo state
         if: github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch'
         run: |
-          gh variable set NEXT_PUBLIC_SHOW_PROMO --body "${{ env.NEXT_PUBLIC_SHOW_PROMO }}"
+          gh variable set NEXT_PUBLIC_SHOW_PROMO --body "${{ env.NEXT_PUBLIC_SHOW_PROMO }}" --repo ${{ github.repository }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
