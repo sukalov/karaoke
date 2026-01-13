@@ -84,8 +84,12 @@ jobs:
           NEXT_PUBLIC_PROMO_TEXT: ${{ env.NEXT_PUBLIC_PROMO_TEXT }}
           NEXT_PUBLIC_PROMO_URL: ${{ env.NEXT_PUBLIC_PROMO_URL }}
 
-      - name: force fresh deployment timestamp
+      - name: prepare combined deployment
         run: |
+          mkdir -p ./combined
+          cp -r ./main/out/* ./combined/
+          mkdir -p ./combined/songbook
+          cp -r ./songbook/out/* ./combined/songbook/
           echo $(date +%s) > ./combined/.deployment-timestamp
 
       - name: upload artifact
@@ -105,4 +109,3 @@ jobs:
       - name: deploy to github pages
         id: deployment
         uses: actions/deploy-pages@v4
-
