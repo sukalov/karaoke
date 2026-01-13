@@ -22,9 +22,9 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
-      NEXT_PUBLIC_SHOW_PROMO: ${{ vars.NEXT_PUBLIC_SHOW_PROMO || 'false' }}
-      NEXT_PUBLIC_PROMO_TEXT: ${{ vars.NEXT_PUBLIC_PROMO_TEXT }}
-      NEXT_PUBLIC_PROMO_URL: ${{ vars.NEXT_PUBLIC_PROMO_URL }}
+      NEXT_PUBLIC_SHOW_PROMO: ${{ github.event.client_payload.promo_show || vars.NEXT_PUBLIC_SHOW_PROMO || 'false' }}
+      NEXT_PUBLIC_PROMO_TEXT: ${{ github.event.client_payload.promo_text || vars.NEXT_PUBLIC_PROMO_TEXT }}
+      NEXT_PUBLIC_PROMO_URL: ${{ github.event.client_payload.promo_url || vars.NEXT_PUBLIC_PROMO_URL }}
     steps:
       - name: checkout main branch
         uses: actions/checkout@v4
