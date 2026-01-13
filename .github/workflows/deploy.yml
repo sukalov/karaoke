@@ -84,12 +84,9 @@ jobs:
           NEXT_PUBLIC_PROMO_TEXT: ${{ env.NEXT_PUBLIC_PROMO_TEXT }}
           NEXT_PUBLIC_PROMO_URL: ${{ env.NEXT_PUBLIC_PROMO_URL }}
 
-      - name: prepare combined deployment
+      - name: force fresh deployment timestamp
         run: |
-          mkdir -p ./combined
-          cp -r ./main/out/* ./combined/
-          mkdir -p ./combined/songbook
-          cp -r ./songbook/out/* ./combined/songbook/
+          echo $(date +%s) > ./combined/.deployment-timestamp
 
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -103,6 +100,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: wait for github pages to prepare
+        run: sleep 30
       - name: deploy to github pages
         id: deployment
         uses: actions/deploy-pages@v4
+
