@@ -1,4 +1,5 @@
 import { Github, Instagram, Send } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Footer() {
   return (
@@ -29,6 +30,7 @@ export function Footer() {
           </a>
         </div>
         <div className="flex gap-1 sm:gap-3 w-full sm:w-auto">
+          <ThemeToggle />
           <a
             href="https://github.com/sukalov/karaoke"
             aria-label="исходный код этого сайта"
