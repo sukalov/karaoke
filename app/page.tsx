@@ -1,6 +1,7 @@
 import { db } from "@/db";
 import { SongbookSelect, songbook } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { readFile } from "fs/promises";
 
 import SongChooser from "./song-catalogue";
 
@@ -25,6 +26,25 @@ const logError = (offset: number, attempt: number, error: unknown) => {
     error,
   });
 };
+
+type SongbookJson = Omit<SongbookSelect, "created_at" | "excluded"> & {
+  created_at: number | null;
+  excluded: number | boolean | null;
+};
+
+const fromJson = (song: SongbookJson): SongbookSelect => ({
+  ...song,
+  created_at: song.created_at ? new Date(song.created_at * 1000) : null,
+  excluded: song.excluded === null ? null : Boolean(song.excluded),
+});
+
+async function getSongsFromFile(path: string) {
+  console.log("[songbook] reading songs from file", { path });
+  const file = await readFile(path, "utf8");
+  const songs = (JSON.parse(file) as SongbookJson[]).map(fromJson);
+  console.log("[songbook] read songs from file", { count: songs.length });
+  return songs.sort(() => Math.random() - 0.5);
+}
 
 const getSongsPage = (offset: number) =>
   db
@@ -59,6 +79,10 @@ async function getSongsPageWithRetry(offset: number) {
 }
 
 async function getSongs() {
+  if (process.env.SONGBOOK_DATA_PATH) {
+    return getSongsFromFile(process.env.SONGBOOK_DATA_PATH);
+  }
+
   logBuildInfo();
   const songs: SongbookSelect[] = [];
 
