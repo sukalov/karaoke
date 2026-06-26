@@ -63,6 +63,27 @@ jobs:
       - name: setup pages
         uses: actions/configure-pages@v4
 
+      - name: diagnose main database connection
+        working-directory: ./main
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
+        run: |
+          bun -e '
+            import { createClient } from "@libsql/client";
+            const host = process.env.DATABASE_URL ? new URL(process.env.DATABASE_URL).host : "missing";
+            console.log("[diagnostic] database", { host, hasAuthToken: Boolean(process.env.DATABASE_AUTH_TOKEN) });
+            const db = createClient({ url: process.env.DATABASE_URL, authToken: process.env.DATABASE_AUTH_TOKEN });
+            console.time("[diagnostic] count query");
+            const count = await db.execute("select count(*) as count from songbook where excluded = 0");
+            console.timeEnd("[diagnostic] count query");
+            console.log("[diagnostic] count result", count.rows[0]);
+            console.time("[diagnostic] first page query");
+            const page = await db.execute("select id, category, title, artist, artist_name, link, additional_chords, excluded, counter, created_at from songbook where excluded = 0 order by id limit 100 offset 0");
+            console.timeEnd("[diagnostic] first page query");
+            console.log("[diagnostic] first page rows", page.rows.length);
+          '
+
       - name: build main site
         run: bun run build
         working-directory: ./main
