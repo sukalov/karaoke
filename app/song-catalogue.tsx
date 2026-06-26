@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
-import { Category } from "@/types/types";
+import { Section } from "@/types/types";
 import { SongbookSelect } from "@/db/schema";
 import { Footer } from "./footer";
 import { alumni } from "./fonts/fonts";
@@ -22,9 +22,7 @@ import DonateButton from "@/components/donate-button";
 import PromoButton from "@/components/promo-button";
 
 export default function SongChooser({ songs }: { songs: SongbookSelect[] }) {
-  const [currentCategory, setCurrentCategory] = useState<
-    Category | "все песни"
-  >("все песни");
+  const [currentCategory, setCurrentCategory] = useState<Section>("все песни");
   const [menuOpen, setMenuOpen] = useState(false);
   const [randomSong, setRandomSong] = useState<SongbookSelect | null>(null);
   const [isRandomSongOpen, setIsRandomSongOpen] = useState(false);

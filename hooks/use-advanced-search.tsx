@@ -1,4 +1,5 @@
 import { SongbookSelect } from "@/db/schema";
+import { Section } from "@/types/types";
 import Fuse from "fuse.js";
 import { useMemo, useState } from "react";
 
@@ -11,9 +12,45 @@ const normalizeCyrillic = (str: string) => {
     .replace(/[\u0300-\u036f]/g, "") // Remove diacritical marks
 };
 
+const RECENT_DAYS = 120;
+
+const getRecentlyAddedCutoff = () =>
+  new Date(Date.now() - RECENT_DAYS * 24 * 60 * 60 * 1000);
+
+const sortByCreatedAtDesc = <T extends SongbookSelect>(songs: T[]) =>
+  [...songs].sort(
+    (a, b) => (b.created_at?.getTime() || 0) - (a.created_at?.getTime() || 0)
+  );
+
+const isInSection = (
+  song: SongbookSelect,
+  currentCategory: Section,
+  cutoff: Date
+) => {
+  if (currentCategory === "все песни") return true;
+  if (currentCategory === "недавно добавили") {
+    return !!song.created_at && song.created_at >= cutoff;
+  }
+  return song.category === currentCategory;
+};
+
+const filterBySection = <T extends SongbookSelect>(
+  songs: T[],
+  currentCategory: Section
+) => {
+  const cutoff = getRecentlyAddedCutoff();
+  const filteredSongs = songs.filter((song) =>
+    isInSection(song, currentCategory, cutoff)
+  );
+
+  return currentCategory === "недавно добавили"
+    ? sortByCreatedAtDesc(filteredSongs)
+    : filteredSongs;
+};
+
 export const useAdvancedSearch = (
   songs: SongbookSelect[],
-  currentCategory: string
+  currentCategory: Section
 ) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [processedSearchTerm, setProcessedSearchTerm] = useState("");
@@ -47,10 +84,7 @@ export const useAdvancedSearch = (
 
     // If no search term, filter only by category
     if (!normalizedSearchTerm) {
-      return songs.filter(
-        (song) =>
-          currentCategory === "все песни" || song.category === currentCategory
-      );
+      return filterBySection(songs, currentCategory);
     }
 
     // Create Fuse instance
@@ -74,16 +108,15 @@ export const useAdvancedSearch = (
       ),
     ];
 
+    const cutoff = getRecentlyAddedCutoff();
+
     // Filter results by category and sort by relevance
     return combinedResults
       .map((result) => ({
         ...result.item,
         searchScore: result.score || 1,
       }))
-      .filter(
-        (song) =>
-          currentCategory === "все песни" || song.category === currentCategory
-      )
+      .filter((song) => isInSection(song, currentCategory, cutoff))
       .sort((a, b) => (a.searchScore || 1) - (b.searchScore || 1));
   }, [songs, processedSearchTerm, currentCategory]);
 

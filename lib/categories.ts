@@ -1,7 +1,8 @@
-import { Category } from "@/types/types";
+import { Section } from "@/types/types";
 
-export const CATEGORIES: Array<{ name: Category | "все песни"; color: string }> = [
+export const CATEGORIES: Array<{ name: Section; color: string }> = [
     { name: "все песни", color: "gray-600" },
+    { name: "недавно добавили", color: "black" },
     { name: "советское", color: "red-500" },
     { name: "русский рок", color: "purple-500" },
     { name: "детские песни", color: "blue-800" },

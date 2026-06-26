@@ -1,6 +1,6 @@
 import { CATEGORIES } from "@/lib/categories";
 import { cn } from "@/lib/utils";
-import { Category } from "@/types/types";
+import { Section } from "@/types/types";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Dispatch, SetStateAction } from "react";
 import { ClassNameValue } from "tailwind-merge";
@@ -17,8 +17,8 @@ const ChooseCategoryDrawer = ({
 }: {
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
-  setCurrentCategory: Dispatch<SetStateAction<Category | "все песни">>;
-  currentCategory: Category | "все песни";
+  setCurrentCategory: Dispatch<SetStateAction<Section>>;
+  currentCategory: Section;
 }) => {
   return (
     <Drawer open={menuOpen} onOpenChange={setMenuOpen}>
@@ -64,6 +64,8 @@ function CategoryButton({
   className?: ClassNameValue;
   categoryName: string;
 }) {
+  const colorClass = color === "black" ? "bg-black" : `bg-${color}`;
+
   return (
     <Button
       variant="ghost"
@@ -76,12 +78,12 @@ function CategoryButton({
     >
       {categoryName !== "все песни" && isActive ? (
         <div
-          className={`absolute rounded-tl-md rounded-bl-md h-full w-1.5 left-0 bg-${color}`}
+          className={`absolute rounded-tl-md rounded-bl-md h-full w-1.5 left-0 ${colorClass}`}
         />
       ) : (
         isActive && (
           <div
-            className={`absolute rounded-tl-md rounded-bl-md h-full w-1.5 left-0 overflow-hidden bg-${color}`}
+            className={`absolute rounded-tl-md rounded-bl-md h-full w-1.5 left-0 overflow-hidden ${colorClass}`}
           >
             <div className="w-full h-1.5 bg-red-500"></div>
             <div className="w-full h-1.5 bg-purple-500"></div>
@@ -101,8 +103,8 @@ const ChooseCategorySidebar = ({
   setCurrentCategory,
   currentCategory,
 }: {
-  setCurrentCategory: Dispatch<SetStateAction<Category | "все песни">>;
-  currentCategory: Category | "все песни";
+  setCurrentCategory: Dispatch<SetStateAction<Section>>;
+  currentCategory: Section;
 }) => (
   <ScrollArea className="h-[calc(100vh-200px)]">
     <div className="space-y-2">

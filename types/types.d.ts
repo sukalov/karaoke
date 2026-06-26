@@ -5,3 +5,5 @@ export type Category =
   | "детские песни"
   | "русская поп-музыка"
   | "разное";
+
+export type Section = Category | "все песни" | "недавно добавили";

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Button } from "./ui/button";
-import { Category } from "@/types/types";
+import { Section } from "@/types/types";
 import { getColor } from "@/lib/utils";
 
 const SelectCategoryButton = ({
@@ -8,31 +8,36 @@ const SelectCategoryButton = ({
   currentCategory,
 }: {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
-  currentCategory: Category | "все песни";
-}) => (
-  <Button
-    variant="outline"
-    onClick={() => setMenuOpen(true)}
-    className="flex-1 relative"
-  >
-    <div
-      className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 ${
-        currentCategory === "все песни" && "overflow-hidden"
-      } bg-${getColor(currentCategory)}`}
+  currentCategory: Section;
+}) => {
+  const color = getColor(currentCategory);
+  const colorClass = color === "black" ? "bg-black" : `bg-${color}`;
+
+  return (
+    <Button
+      variant="outline"
+      onClick={() => setMenuOpen(true)}
+      className="flex-1 relative"
     >
-      {currentCategory == "все песни" && (
-        <div>
-          <div className="w-full h-1.5 bg-red-500"></div>
-          <div className="w-full h-1.5 bg-purple-500"></div>
-          <div className="w-full h-1.5 bg-blue-800"></div>
-          <div className="w-full h-1.5 bg-green-500"></div>
-          <div className="w-full h-1.5 bg-sky-500"></div>
-          <div className="w-full h-1.5 bg-yellow-500"></div>
-        </div>
-      )}
-    </div>
-    жанры
-  </Button>
-);
+      <div
+        className={`absolute rounded-tl-md rounded-bl-md h-full w-2 left-0 ${
+          currentCategory === "все песни" && "overflow-hidden"
+        } ${colorClass}`}
+      >
+        {currentCategory == "все песни" && (
+          <div>
+            <div className="w-full h-1.5 bg-red-500"></div>
+            <div className="w-full h-1.5 bg-purple-500"></div>
+            <div className="w-full h-1.5 bg-blue-800"></div>
+            <div className="w-full h-1.5 bg-green-500"></div>
+            <div className="w-full h-1.5 bg-sky-500"></div>
+            <div className="w-full h-1.5 bg-yellow-500"></div>
+          </div>
+        )}
+      </div>
+      жанры
+    </Button>
+  );
+};
 
 export default SelectCategoryButton;

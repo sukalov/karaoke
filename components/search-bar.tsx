@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import { Input } from "./ui/input";
-import { Category } from "@/types/types";
+import { Section } from "@/types/types";
 
 const SearchBar = ({
   searchTerm,
@@ -9,7 +9,7 @@ const SearchBar = ({
 }: {
   searchTerm: string;
   setSearchTerm: (_term: string) => void;
-  setCurrentCategory: (_term: Category | "все песни") => void;
+  setCurrentCategory: (_term: Section) => void;
 }) => (
   <div className="relative flex-grow">
     <Search
