@@ -5,3 +5,4 @@ out
 .trunk
 .vercel
 .env*.local
+.songbook-data.json

@@ -72,12 +72,8 @@ jobs:
           bun -e '
             import { createClient } from "@libsql/client";
             import { writeFile } from "fs/promises";
-            const host = process.env.DATABASE_URL ? new URL(process.env.DATABASE_URL).host : "missing";
-            console.log("[songbook export] database", { host, hasAuthToken: Boolean(process.env.DATABASE_AUTH_TOKEN) });
             const db = createClient({ url: process.env.DATABASE_URL, authToken: process.env.DATABASE_AUTH_TOKEN });
-            console.time("[songbook export] query");
             const result = await db.execute("select id, category, title, artist, artist_name, link, additional_chords, excluded, counter, created_at from songbook where excluded = 0 order by id");
-            console.timeEnd("[songbook export] query");
             const songs = result.rows.map((row) => ({
               id: row.id,
               category: row.category,
@@ -91,7 +87,7 @@ jobs:
               created_at: row.created_at,
             }));
             await writeFile(".songbook-data.json", JSON.stringify(songs));
-            console.log("[songbook export] wrote file", { count: songs.length });
+            console.log(`exported ${songs.length} songs`);
           '
 
       - name: build main site
