@@ -64,7 +64,7 @@ function CategoryButton({
   className?: ClassNameValue;
   categoryName: string;
 }) {
-  const colorClass = color === "black" ? "bg-black" : `bg-${color}`;
+  const colorClass = color === "black" ? "bg-black dark:bg-white" : `bg-${color}`;
 
   return (
     <Button

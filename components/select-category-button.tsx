@@ -11,7 +11,7 @@ const SelectCategoryButton = ({
   currentCategory: Section;
 }) => {
   const color = getColor(currentCategory);
-  const colorClass = color === "black" ? "bg-black" : `bg-${color}`;
+  const colorClass = color === "black" ? "bg-black dark:bg-white" : `bg-${color}`;
 
   return (
     <Button

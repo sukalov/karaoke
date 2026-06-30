@@ -27,7 +27,7 @@ export default function SongCard({
     >
       <Card
         className={cn(
-          `overflow-hidden hover:shadow-md transition-all relative`,
+          `overflow-hidden hover:shadow-md dark:shadow-none dark:hover:shadow-white/5 transition-all relative`,
           className
         )}
       >
